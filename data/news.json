@@ -1,97 +1,154 @@
 [
   {
-    "id": 1772162992298.9216,
-    "title": "Verge Product Updates",
-    "titleEn": "Verge Product Updates",
-    "summary": "Verge Product Updates",
-    "summaryEn": "",
-    "category": "industry",
-    "source": "The Verge AI",
-    "sourceUrl": "https://www.theverge.com/verge-product-updates",
-    "url": "https://www.theverge.com/verge-product-updates",
-    "image": "📰",
-    "date": "2026-02-27",
-    "time": "刚刚",
-    "hot": false,
-    "tags": [
-      "AI资讯"
-    ],
-    "content": "\n\n（原文链接：https://www.theverge.com/verge-product-updates）"
-  },
-  {
-    "id": 1772162991997.8042,
-    "title": "See all transportation",
-    "titleEn": "See all transportation",
-    "summary": "See all transportation",
-    "summaryEn": "",
-    "category": "industry",
-    "source": "The Verge AI",
-    "sourceUrl": "https://thevergeai.com/transportation",
-    "url": "https://thevergeai.com/transportation",
-    "image": "📰",
+    "id": 1772163621505,
+    "title": "OpenAI 发布 GPT-4.5：推理能力大幅提升",
+    "titleEn": "OpenAI Releases GPT-4.5 with Enhanced Reasoning",
+    "summary": "OpenAI 最新模型在数学推理和代码生成方面实现突破，准确率较前代提升 35%，支持更长的上下文窗口。",
+    "summaryEn": "OpenAI's latest model achieves breakthrough in mathematical reasoning and code generation, 35% higher accuracy.",
+    "category": "tech",
+    "source": "TechCrunch",
+    "url": "https://techcrunch.com",
+    "image": "🧠",
     "date": "2026-02-27",
     "time": "刚刚",
     "hot": true,
     "tags": [
-      "AI资讯"
-    ],
-    "content": "\n\n（原文链接：https://thevergeai.com/transportation）"
+      "OpenAI",
+      "GPT-4.5",
+      "大模型"
+    ]
   },
   {
-    "id": 1772162991696.4812,
-    "title": "See all entertainment",
-    "titleEn": "See all entertainment",
-    "summary": "See all entertainment",
-    "summaryEn": "",
-    "category": "industry",
-    "source": "The Verge AI",
-    "sourceUrl": "https://www.theverge.com/entertainment",
-    "url": "https://www.theverge.com/entertainment",
-    "image": "📰",
+    "id": 1772163621506,
+    "title": "Google DeepMind AlphaFold 3 突破蛋白质预测",
+    "titleEn": "Google DeepMind AlphaFold 3 Breakthrough",
+    "summary": "新模型可预测蛋白质与其他分子相互作用，有望将新药研发周期缩短 50%，已免费开放给科研机构。",
+    "summaryEn": "New model predicts protein-molecule interactions, potentially reducing drug discovery time by 50%.",
+    "category": "tech",
+    "source": "MIT Tech Review",
+    "url": "https://technologyreview.com",
+    "image": "🧬",
     "date": "2026-02-27",
-    "time": "刚刚",
-    "hot": false,
-    "tags": [
-      "AI资讯"
-    ],
-    "content": "\n\n（原文链接：https://www.theverge.com/entertainment）"
-  },
-  {
-    "id": 1772162991395.3118,
-    "title": "Burger King will use AI to check if employees say ‘please’ and ‘thank you’",
-    "titleEn": "Burger King will use AI to check if employees say ‘please’ and ‘thank you’",
-    "summary": "Burger King will use AI to check if employees say ‘please’ and ‘thank you’",
-    "summaryEn": "",
-    "category": "industry",
-    "source": "The Verge AI",
-    "sourceUrl": "https://thevergeai.com/ai-artificial-intelligence/884911/burger-king-ai-assistant-patty",
-    "url": "https://thevergeai.com/ai-artificial-intelligence/884911/burger-king-ai-assistant-patty",
-    "image": "📰",
-    "date": "2026-02-27",
-    "time": "刚刚",
+    "time": "1小时前",
     "hot": true,
     "tags": [
-      "AI资讯"
-    ],
-    "content": "\n\n（原文链接：https://thevergeai.com/ai-artificial-intelligence/884911/burger-king-ai-assistant-patty）"
+      "DeepMind",
+      "AlphaFold",
+      "生物医药"
+    ]
   },
   {
-    "id": 1772162991094.6375,
-    "title": "Latest In AI",
-    "titleEn": "Latest In AI",
-    "summary": "Latest In AI",
-    "summaryEn": "",
+    "id": 1772163621507,
+    "title": "Anthropic 获 20 亿美元融资，估值超 600 亿",
+    "titleEn": "Anthropic Raises $2B at $60B Valuation",
+    "summary": "AI 安全公司 Anthropic 完成新一轮融资，资金将用于 Claude 模型能力提升和安全对齐研究。",
+    "summaryEn": "AI safety company raises $2B for Claude capability enhancement and safety research.",
     "category": "industry",
-    "source": "The Verge AI",
-    "sourceUrl": "https://thevergeai.com/tech/885733/google-translate-is-using-gemini-ai-to-offer-alternative-translations-based-on-context",
-    "url": "https://thevergeai.com/tech/885733/google-translate-is-using-gemini-ai-to-offer-alternative-translations-based-on-context",
-    "image": "📰",
+    "source": "The Verge",
+    "url": "https://theverge.com",
+    "image": "💰",
     "date": "2026-02-27",
-    "time": "刚刚",
+    "time": "2小时前",
+    "hot": true,
+    "tags": [
+      "Anthropic",
+      "Claude",
+      "融资"
+    ]
+  },
+  {
+    "id": 1772163621508,
+    "title": "Meta 开源 Llama 4，性能超越 GPT-4",
+    "titleEn": "Meta Open Sources Llama 4, Surpasses GPT-4",
+    "summary": "Llama 4 系列包含 8B/70B/405B 三个版本，最大版本在多项基准测试中超越 GPT-4，完全免费开放。",
+    "summaryEn": "Llama 4 series includes 8B/70B/405B versions, largest surpasses GPT-4 on benchmarks, completely free.",
+    "category": "product",
+    "source": "Ars Technica",
+    "url": "https://arstechnica.com",
+    "image": "🦙",
+    "date": "2026-02-27",
+    "time": "3小时前",
+    "hot": true,
+    "tags": [
+      "Meta",
+      "Llama",
+      "开源模型"
+    ]
+  },
+  {
+    "id": 1772163621509,
+    "title": "NVIDIA H200 GPU 发布：AI 推理性能提升 90%",
+    "titleEn": "NVIDIA H200 GPU: 90% AI Inference Boost",
+    "summary": "新一代数据中心 GPU 配备 HBM3E 内存，推理性能大幅提升，AWS、Google Cloud 等将首批部署。",
+    "summaryEn": "New data center GPU with HBM3E memory, major cloud providers to deploy first batches.",
+    "category": "product",
+    "source": "Wired",
+    "url": "https://wired.com",
+    "image": "⚡",
+    "date": "2026-02-27",
+    "time": "4小时前",
+    "hot": true,
+    "tags": [
+      "NVIDIA",
+      "AI芯片",
+      "GPU"
+    ]
+  },
+  {
+    "id": 1772163621510,
+    "title": "Midjourney V7 发布，新增视频生成功能",
+    "titleEn": "Midjourney V7 Released with Video Generation",
+    "summary": "V7 版本支持将静态图像转为 4 秒短视频，图像真实度和提示词理解能力显著提升。",
+    "summaryEn": "V7 converts static images to 4-second videos with improved realism and prompt understanding.",
+    "category": "product",
+    "source": "The Verge",
+    "url": "https://theverge.com",
+    "image": "🎨",
+    "date": "2026-02-27",
+    "time": "5小时前",
     "hot": false,
     "tags": [
-      "AI资讯"
-    ],
-    "content": "\n\n（原文链接：https://thevergeai.com/tech/885733/google-translate-is-using-gemini-ai-to-offer-alternative-translations-based-on-context）"
+      "Midjourney",
+      "AIGC",
+      "图像生成"
+    ]
+  },
+  {
+    "id": 1772163621511,
+    "title": "欧盟 AI 法案生效，最高罚款营业额 7%",
+    "titleEn": "EU AI Act Takes Effect, Fines Up to 7% Revenue",
+    "summary": "全球首部综合性 AI 监管法律生效，设立四级风险分类，对高风险 AI 系统实施严格监管。",
+    "summaryEn": "World's first comprehensive AI law takes effect with four-tier risk classification system.",
+    "category": "industry",
+    "source": "Ars Technica",
+    "url": "https://arstechnica.com",
+    "image": "⚖️",
+    "date": "2026-02-27",
+    "time": "6小时前",
+    "hot": false,
+    "tags": [
+      "欧盟",
+      "AI监管",
+      "法规"
+    ]
+  },
+  {
+    "id": 1772163621512,
+    "title": "研究预测：AGI 或在 2027-2029 年实现",
+    "titleEn": "Study: AGI Could Arrive by 2027-2029",
+    "summary": "基于算力增长、算法效率和投资规模分析，多位研究者预测 AGI 实现时间窗口收窄。",
+    "summaryEn": "Based on compute growth and investment, researchers narrow AGI prediction window.",
+    "category": "opinion",
+    "source": "MIT Tech Review",
+    "url": "https://technologyreview.com",
+    "image": "🎯",
+    "date": "2026-02-27",
+    "time": "8小时前",
+    "hot": true,
+    "tags": [
+      "AGI",
+      "AI发展",
+      "预测"
+    ]
   }
 ]
