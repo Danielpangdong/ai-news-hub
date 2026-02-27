@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 深观察 - 每日精选全球AI资讯</title>
+    <meta name="description" content="汇集全球AI领域最有价值的洞见与资讯，每日更新">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <span class="logo-text">AI 深观察</span>
+                </a>
+                <nav class="nav">
+                    <a href="#" class="nav-link active" data-category="all">全部</a>
+                    <a href="#" class="nav-link" data-category="industry">行业动态</a>
+                    <a href="#" class="nav-link" data-category="product">产品发布</a>
+                    <a href="#" class="nav-link" data-category="tech">技术突破</a>
+                    <a href="#" class="nav-link" data-category="opinion">深度观点</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" title="切换主题">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="refresh-btn" id="refreshBtn" title="刷新内容">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main">
+        <div class="container">
+            <div class="content-layout">
+                <!-- 左侧：资讯列表 -->
+                <div class="news-section">
+                    <div class="section-header">
+                        <h1 class="section-title">今日精选</h1>
+                        <span class="update-time" id="updateTime">更新于：加载中...</span>
+                    </div>
+                    
+                    <div class="news-list" id="newsList">
+                        <!-- 动态加载内容 -->
+                    </div>
+
+                    <div class="loading-state" id="loadingState" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>正在加载最新资讯...</p>
+                    </div>
+
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <span class="empty-icon">📭</span>
+                        <p>暂无该分类资讯</p>
+                    </div>
+                </div>
+
+                <!-- 右侧：侧边栏 -->
+                <aside class="sidebar">
+                    <!-- 搜索 -->
+                    <div class="widget">
+                        <div class="search-box">
+                            <input type="text" placeholder="搜索资讯..." id="searchInput">
+                            <button class="search-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 热门标签 -->
+                    <div class="widget">
+                        <h3 class="widget-title">热门标签</h3>
+                        <div class="tag-cloud" id="tagCloud">
+                            <!-- 动态生成 -->
+                        </div>
+                    </div>
+
+                    <!-- 数据来源 -->
+                    <div class="widget">
+                        <h3 class="widget-title">数据来源</h3>
+                        <ul class="source-list">
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #4285f4;"></span>
+                                <span>TechCrunch</span>
+                            </li>
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #ff6600;"></span>
+                                <span>The Verge</span>
+                            </li>
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #000;"></span>
+                                <span>MIT Tech Review</span>
+                            </li>
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #e74c3c;"></span>
+                                <span>Ars Technica</span>
+                            </li>
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #9b59b6;"></span>
+                                <span>Wired</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 关于 -->
+                    <div class="widget about-widget">
+                        <h3 class="widget-title">关于</h3>
+                        <p class="about-text">
+                            AI 深观察每日汇集全球最有价值的AI资讯与洞见，帮助您快速了解人工智能领域的最新动态。
+                        </p>
+                        <div class="about-meta">
+                            <span>📅 每日更新</span>
+                            <span>🤖 自动聚合</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <p class="copyright">
+                    © 2026 AI 深观察 · 每日精选全球AI资讯
+                </p>
+                <p class="footer-meta">
+                    内容由AI自动聚合，仅供参考
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 详情弹窗 -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-lang-toggle" id="langToggle" style="display: none;">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 动态内容 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
