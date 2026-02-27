@@ -560,6 +560,52 @@ a {
 }
 
 /* ==========================================
+   Modal Language Toggle
+   ========================================== */
+.modal-lang-toggle {
+    position: absolute;
+    top: 16px;
+    right: 56px;
+    display: flex;
+    gap: 4px;
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    padding: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.lang-btn {
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    color: var(--text-tertiary);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lang-btn:hover {
+    color: var(--text-secondary);
+}
+
+.lang-btn.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+.lang-tip {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--primary);
+}
+
+/* ==========================================
    Modal
    ========================================== */
 .modal {

@@ -248,6 +248,16 @@ function initEventListeners() {
         if (e.target.id === 'detailModal') closeModal();
     });
     
+    // 语言切换
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentModalLang = btn.dataset.lang;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderModalContent();
+        });
+    });
+    
     // ESC 关闭弹窗
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
@@ -371,6 +381,11 @@ function renderTagCloud() {
 // ==========================================
 // 交互功能
 // ==========================================
+
+// 当前弹窗显示的新闻和语言
+let currentModalItem = null;
+let currentModalLang = 'zh';
+
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -391,20 +406,52 @@ function setCategory(category) {
 }
 
 function showDetail(item) {
+    currentModalItem = item;
+    currentModalLang = 'zh';
+    
     const modal = document.getElementById('detailModal');
+    const langToggle = document.getElementById('langToggle');
+    
+    // 如果有英文原文，显示语言切换按钮
+    if (item.titleEn || item.summaryEn) {
+        langToggle.style.display = 'flex';
+        // 重置按钮状态
+        langToggle.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === 'zh');
+        });
+    } else {
+        langToggle.style.display = 'none';
+    }
+    
+    renderModalContent();
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function renderModalContent() {
+    const item = currentModalItem;
     const body = document.getElementById('modalBody');
     const categoryClass = categoryStyles[item.category] || '';
     
+    // 根据当前语言选择内容
+    const isZh = currentModalLang === 'zh';
+    const title = isZh ? item.title : (item.titleEn || item.title);
+    const content = isZh ? item.content : (item.summaryEn || item.summary);
+    
     // 将内容中的换行转换为段落
-    const contentHtml = item.content
+    const contentHtml = content
         .split('\n\n')
         .map(p => `<p>${escapeHtml(p).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`)
         .join('');
     
+    // 如果有英文，显示翻译提示
+    const langTip = (item.titleEn && isZh) ? '<p class="lang-tip">💡 点击下方按钮查看英文原文</p>' : '';
+    
     body.innerHTML = `
         <div class="modal-header">
             <span class="modal-category ${categoryClass}">${categoryMap[item.category]}</span>
-            <h1 class="modal-title">${escapeHtml(item.title)}</h1>
+            <h1 class="modal-title">${escapeHtml(title)}</h1>
             <div class="modal-meta">
                 <span>来源：${item.source}</span>
                 <span>${item.date}</span>
@@ -412,6 +459,7 @@ function showDetail(item) {
             </div>
         </div>
         <div class="modal-content-text">
+            ${langTip}
             ${contentHtml}
         </div>
         <a href="${item.url}" class="modal-link" target="_blank" rel="noopener">
@@ -423,15 +471,13 @@ function showDetail(item) {
             </svg>
         </a>
     `;
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
     const modal = document.getElementById('detailModal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
+    currentModalItem = null;
 }
 
 function refreshData() {
