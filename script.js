@@ -201,9 +201,10 @@ async function loadSourceStatus() {
         const failed = Array.isArray(status.failedSources) ? status.failedSources : sources.filter((item) => !item.ok).map((item) => item.name);
         const total = sources.length || 10;
         const okCount = total - failed.length;
+        const published = typeof status.itemCount === 'number' ? status.itemCount : '';
         text.textContent = failed.length === 0
-            ? `${okCount}/${total} 个源正常`
-            : `${okCount}/${total} 个源正常，失败：${failed.join('、')}`;
+            ? `${okCount}/${total} 个源可达，上线 ${published} 条`
+            : `${okCount}/${total} 个源可达，失败：${failed.join('、')}`;
         widget.hidden = false;
     } catch {
         widget.hidden = true;

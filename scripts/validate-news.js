@@ -6,8 +6,10 @@ const path = require('path');
 
 const ALLOWED_CATEGORIES = new Set(['industry', 'product', 'tech', 'opinion']);
 const NEWS_PATH = path.join(__dirname, '..', 'data', 'news.json');
+const STATUS_PATH = path.join(__dirname, '..', 'data', 'status.json');
 const MAX_ITEMS = 40;
-const MIN_ITEMS = 1;
+const MIN_ITEMS = 10;
+const MIN_SOURCES = 4;
 
 function fail(message) {
     console.error(`校验失败: ${message}`);
@@ -107,7 +109,28 @@ function main() {
         urls.add(item.url);
     });
 
-    console.log(`校验通过: ${data.length} 条资讯`);
+    const sourceNames = new Set(data.map((item) => item.source));
+    if (sourceNames.size < MIN_SOURCES) {
+        fail(`来源种类不足 ${MIN_SOURCES}，当前 ${sourceNames.size}`);
+    }
+
+    if (!fs.existsSync(STATUS_PATH)) {
+        fail(`找不到 ${STATUS_PATH}`);
+    }
+    let status;
+    try {
+        status = JSON.parse(fs.readFileSync(STATUS_PATH, 'utf8'));
+    } catch (error) {
+        fail(`status.json 无法解析: ${error.message}`);
+    }
+    if (!status || status.itemCount !== data.length) {
+        fail(`status.itemCount 必须等于资讯条数 ${data.length}`);
+    }
+    if (!Array.isArray(status.sources) || status.sources.length < MIN_SOURCES) {
+        fail('status.sources 缺少足够的源记录');
+    }
+
+    console.log(`校验通过: ${data.length} 条资讯，${sourceNames.size} 个来源`);
 }
 
 main();

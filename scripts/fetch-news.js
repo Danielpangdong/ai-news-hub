@@ -653,11 +653,20 @@ async function main() {
     saveJson(OUTPUT_PATH, news);
     saveJson(CACHE_PATH, translationCache);
     writeSitemap(news);
+    const publishedCounts = {};
+    news.forEach((item) => {
+        publishedCounts[item.source] = (publishedCounts[item.source] || 0) + 1;
+    });
     saveJson(path.join(__dirname, '..', 'data', 'status.json'), {
         fetchedAt: new Date().toISOString(),
         itemCount: news.length,
         failedSources: sourceHealth.filter((item) => !item.ok).map((item) => item.name),
-        sources: sourceHealth
+        sources: sourceHealth.map((item) => ({
+            name: item.name,
+            ok: item.ok,
+            fetched: item.count,
+            published: publishedCounts[item.name] || 0
+        }))
     });
 
     const byCategory = {};
