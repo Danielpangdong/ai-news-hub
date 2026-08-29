@@ -11,7 +11,7 @@
 
 ## P1 — 产品可用
 
-- [ ] p1-real-rss-verified：在 CI 或本地验证至少 3 个 RSS 源可抓到近 7 天条目；失败源可降级
+- [x] p1-real-rss-verified：在 CI 或本地验证至少 3 个 RSS 源可抓到近 7 天条目；失败源可降级
 - [x] p1-news-schema：`validate-news.js` 作为质量门禁，拒绝缺字段 / 非法 URL
 - [x] p1-seo-basics：canonical、Open Graph、twitter card、主题色
 - [x] p1-a11y-basics：按钮 aria-label、弹窗 dialog、搜索标签、可见焦点、跳过导航
