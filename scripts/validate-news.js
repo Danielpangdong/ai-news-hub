@@ -1,0 +1,105 @@
+#!/usr/bin/env node
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+
+const ALLOWED_CATEGORIES = new Set(['industry', 'product', 'tech', 'opinion']);
+const NEWS_PATH = path.join(__dirname, '..', 'data', 'news.json');
+const MAX_ITEMS = 40;
+const MIN_ITEMS = 1;
+
+function fail(message) {
+    console.error(`校验失败: ${message}`);
+    process.exit(1);
+}
+
+function isHttpUrl(value) {
+    try {
+        const url = new URL(value);
+        return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch {
+        return false;
+    }
+}
+
+function isIsoDate(value) {
+    return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
+function main() {
+    if (!fs.existsSync(NEWS_PATH)) {
+        fail(`找不到 ${NEWS_PATH}`);
+    }
+
+    let data;
+    try {
+        data = JSON.parse(fs.readFileSync(NEWS_PATH, 'utf8'));
+    } catch (error) {
+        fail(`JSON 无法解析: ${error.message}`);
+    }
+
+    if (!Array.isArray(data)) {
+        fail('news.json 必须是数组');
+    }
+
+    if (data.length < MIN_ITEMS || data.length > MAX_ITEMS) {
+        fail(`条目数量应在 ${MIN_ITEMS}-${MAX_ITEMS} 之间，当前 ${data.length}`);
+    }
+
+    const ids = new Set();
+    const urls = new Set();
+
+    data.forEach((item, index) => {
+        const prefix = `第 ${index + 1} 条`;
+        if (!item || typeof item !== 'object') {
+            fail(`${prefix} 不是对象`);
+        }
+
+        const requiredStrings = ['title', 'summary', 'category', 'source', 'url', 'date'];
+        requiredStrings.forEach((key) => {
+            if (typeof item[key] !== 'string' || item[key].trim().length === 0) {
+                fail(`${prefix} 缺少有效字段 ${key}`);
+            }
+        });
+
+        if (!ALLOWED_CATEGORIES.has(item.category)) {
+            fail(`${prefix} 分类非法: ${item.category}`);
+        }
+
+        if (!isHttpUrl(item.url)) {
+            fail(`${prefix} url 非法: ${item.url}`);
+        }
+
+        if (item.sourceUrl && !isHttpUrl(item.sourceUrl)) {
+            fail(`${prefix} sourceUrl 非法: ${item.sourceUrl}`);
+        }
+
+        if (!isIsoDate(item.date)) {
+            fail(`${prefix} date 必须为 YYYY-MM-DD`);
+        }
+
+        if (!Array.isArray(item.tags) || item.tags.some((tag) => typeof tag !== 'string' || tag.length === 0)) {
+            fail(`${prefix} tags 必须是非空字符串数组`);
+        }
+
+        if (item.hot != null && typeof item.hot !== 'boolean') {
+            fail(`${prefix} hot 必须是布尔值`);
+        }
+
+        const idKey = String(item.id);
+        if (ids.has(idKey)) {
+            fail(`${prefix} id 重复: ${item.id}`);
+        }
+        ids.add(idKey);
+
+        if (urls.has(item.url)) {
+            fail(`${prefix} url 重复: ${item.url}`);
+        }
+        urls.add(item.url);
+    });
+
+    console.log(`校验通过: ${data.length} 条资讯`);
+}
+
+main();

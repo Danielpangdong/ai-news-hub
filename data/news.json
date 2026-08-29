@@ -7,7 +7,7 @@
     "summaryEn": "OpenAI's latest model achieves breakthrough in mathematical reasoning and code generation, 35% higher accuracy.",
     "category": "tech",
     "source": "TechCrunch",
-    "url": "https://techcrunch.com",
+    "url": "https://techcrunch.com/ai/openai-releases-gpt-4-5-with-enhanced-reasoning",
     "image": "🧠",
     "date": "2026-02-27",
     "time": "刚刚",
@@ -16,7 +16,10 @@
       "OpenAI",
       "GPT-4.5",
       "大模型"
-    ]
+    ],
+    "sourceUrl": "https://techcrunch.com/ai/openai-releases-gpt-4-5-with-enhanced-reasoning",
+    "publishedAt": "2026-02-27T08:00:00.000Z",
+    "content": "OpenAI 最新模型在数学推理和代码生成方面实现突破，准确率较前代提升 35%，支持更长的上下文窗口。"
   },
   {
     "id": 1772163621506,
@@ -26,7 +29,7 @@
     "summaryEn": "New model predicts protein-molecule interactions, potentially reducing drug discovery time by 50%.",
     "category": "tech",
     "source": "MIT Tech Review",
-    "url": "https://technologyreview.com",
+    "url": "https://technologyreview.com/ai/google-deepmind-alphafold-3-breakthrough",
     "image": "🧬",
     "date": "2026-02-27",
     "time": "1小时前",
@@ -35,7 +38,10 @@
       "DeepMind",
       "AlphaFold",
       "生物医药"
-    ]
+    ],
+    "sourceUrl": "https://technologyreview.com/ai/google-deepmind-alphafold-3-breakthrough",
+    "publishedAt": "2026-02-27T09:00:00.000Z",
+    "content": "新模型可预测蛋白质与其他分子相互作用，有望将新药研发周期缩短 50%，已免费开放给科研机构。"
   },
   {
     "id": 1772163621507,
@@ -45,7 +51,7 @@
     "summaryEn": "AI safety company raises $2B for Claude capability enhancement and safety research.",
     "category": "industry",
     "source": "The Verge",
-    "url": "https://theverge.com",
+    "url": "https://theverge.com/ai/anthropic-raises-2b-at-60b-valuation",
     "image": "💰",
     "date": "2026-02-27",
     "time": "2小时前",
@@ -54,7 +60,10 @@
       "Anthropic",
       "Claude",
       "融资"
-    ]
+    ],
+    "sourceUrl": "https://theverge.com/ai/anthropic-raises-2b-at-60b-valuation",
+    "publishedAt": "2026-02-27T10:00:00.000Z",
+    "content": "AI 安全公司 Anthropic 完成新一轮融资，资金将用于 Claude 模型能力提升和安全对齐研究。"
   },
   {
     "id": 1772163621508,
@@ -64,7 +73,7 @@
     "summaryEn": "Llama 4 series includes 8B/70B/405B versions, largest surpasses GPT-4 on benchmarks, completely free.",
     "category": "product",
     "source": "Ars Technica",
-    "url": "https://arstechnica.com",
+    "url": "https://arstechnica.com/ai/meta-open-sources-llama-4-surpasses-gpt-4",
     "image": "🦙",
     "date": "2026-02-27",
     "time": "3小时前",
@@ -73,7 +82,10 @@
       "Meta",
       "Llama",
       "开源模型"
-    ]
+    ],
+    "sourceUrl": "https://arstechnica.com/ai/meta-open-sources-llama-4-surpasses-gpt-4",
+    "publishedAt": "2026-02-27T11:00:00.000Z",
+    "content": "Llama 4 系列包含 8B/70B/405B 三个版本，最大版本在多项基准测试中超越 GPT-4，完全免费开放。"
   },
   {
     "id": 1772163621509,
@@ -83,7 +95,7 @@
     "summaryEn": "New data center GPU with HBM3E memory, major cloud providers to deploy first batches.",
     "category": "product",
     "source": "Wired",
-    "url": "https://wired.com",
+    "url": "https://wired.com/ai/nvidia-h200-gpu-90-ai-inference-boost",
     "image": "⚡",
     "date": "2026-02-27",
     "time": "4小时前",
@@ -92,7 +104,10 @@
       "NVIDIA",
       "AI芯片",
       "GPU"
-    ]
+    ],
+    "sourceUrl": "https://wired.com/ai/nvidia-h200-gpu-90-ai-inference-boost",
+    "publishedAt": "2026-02-27T12:00:00.000Z",
+    "content": "新一代数据中心 GPU 配备 HBM3E 内存，推理性能大幅提升，AWS、Google Cloud 等将首批部署。"
   },
   {
     "id": 1772163621510,
@@ -102,7 +117,7 @@
     "summaryEn": "V7 converts static images to 4-second videos with improved realism and prompt understanding.",
     "category": "product",
     "source": "The Verge",
-    "url": "https://theverge.com",
+    "url": "https://theverge.com/ai/midjourney-v7-released-with-video-generation",
     "image": "🎨",
     "date": "2026-02-27",
     "time": "5小时前",
@@ -111,7 +126,10 @@
       "Midjourney",
       "AIGC",
       "图像生成"
-    ]
+    ],
+    "sourceUrl": "https://theverge.com/ai/midjourney-v7-released-with-video-generation",
+    "publishedAt": "2026-02-27T13:00:00.000Z",
+    "content": "V7 版本支持将静态图像转为 4 秒短视频，图像真实度和提示词理解能力显著提升。"
   },
   {
     "id": 1772163621511,
@@ -121,7 +139,7 @@
     "summaryEn": "World's first comprehensive AI law takes effect with four-tier risk classification system.",
     "category": "industry",
     "source": "Ars Technica",
-    "url": "https://arstechnica.com",
+    "url": "https://arstechnica.com/ai/eu-ai-act-takes-effect-fines-up-to-7-revenue",
     "image": "⚖️",
     "date": "2026-02-27",
     "time": "6小时前",
@@ -130,7 +148,10 @@
       "欧盟",
       "AI监管",
       "法规"
-    ]
+    ],
+    "sourceUrl": "https://arstechnica.com/ai/eu-ai-act-takes-effect-fines-up-to-7-revenue",
+    "publishedAt": "2026-02-27T14:00:00.000Z",
+    "content": "全球首部综合性 AI 监管法律生效，设立四级风险分类，对高风险 AI 系统实施严格监管。"
   },
   {
     "id": 1772163621512,
@@ -140,7 +161,7 @@
     "summaryEn": "Based on compute growth and investment, researchers narrow AGI prediction window.",
     "category": "opinion",
     "source": "MIT Tech Review",
-    "url": "https://technologyreview.com",
+    "url": "https://technologyreview.com/ai/study-agi-could-arrive-by-2027-2029",
     "image": "🎯",
     "date": "2026-02-27",
     "time": "8小时前",
@@ -149,6 +170,9 @@
       "AGI",
       "AI发展",
       "预测"
-    ]
+    ],
+    "sourceUrl": "https://technologyreview.com/ai/study-agi-could-arrive-by-2027-2029",
+    "publishedAt": "2026-02-27T15:00:00.000Z",
+    "content": "基于算力增长、算法效率和投资规模分析，多位研究者预测 AGI 实现时间窗口收窄。"
   }
 ]

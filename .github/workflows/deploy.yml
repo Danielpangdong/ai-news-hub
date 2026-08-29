@@ -1,79 +1,67 @@
-# AI 深观察 - GitHub Actions 工作流
-# 功能：1. 自动抓取新闻 2. 部署到 GitHub Pages
-
+# 抓取资讯并部署到 GitHub Pages。抓取与部署必须在同一 job，
+# 避免「更新已 push、部署仍用旧 SHA」的竞态。
 name: Deploy and Update
 
 on:
-  # 每次 push 时部署
   push:
     branches: [main]
-  
-  # 定时任务：每天北京时间 8:00 和 20:00 更新
   schedule:
-    - cron: '0 0 * * *'   # UTC 00:00 = 北京 08:00
-    - cron: '0 12 * * *'  # UTC 12:00 = 北京 20:00
-  
-  # 允许手动触发
+    - cron: '0 0 * * *'
+    - cron: '0 12 * * *'
   workflow_dispatch:
 
-# 权限设置
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# 并发控制
 concurrency:
-  group: 'pages'
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  # 更新新闻数据
-  update-news:
+  update-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Fetch News
+      - name: Fetch and validate news
         id: fetch
+        continue-on-error: true
+        env:
+          AI_NEWS_TRANSLATE: '1'
         run: |
           chmod +x scripts/update.sh
           ./scripts/update.sh
-        continue-on-error: true
 
-      - name: Commit Changes
+      - name: Commit news update
         if: steps.fetch.outcome == 'success'
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          
-          # 检查是否有变更
-          if git diff --quiet data/news.json 2>/dev/null; then
-            echo "📭 没有新资讯"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add data/news.json data/translation_cache.json
+          if git diff --staged --quiet; then
+            echo "资讯无变化"
           else
-            git add data/news.json
-            git commit -m "📰 Auto-update: $(date +'%Y-%m-%d %H:%M')"
+            git commit -m "Auto-update news: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase origin main
             git push
-            echo "✅ 已提交更新"
           fi
-        continue-on-error: true
 
-  # 部署到 GitHub Pages
-  deploy:
-    needs: update-news
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Validate existing news if fetch skipped
+        if: steps.fetch.outcome != 'success'
+        run: node scripts/validate-news.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

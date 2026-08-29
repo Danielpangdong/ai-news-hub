@@ -1,0 +1,13 @@
+{
+  "name": "AI 深观察 (ai-news-hub)",
+  "install": "node --version\npython3 --version\nnode scripts/validate-news.js",
+  "terminals": [
+    {
+      "name": "static-server",
+      "command": "python3 -m http.server 8000 --bind 0.0.0.0"
+    }
+  ],
+  "ports": [
+    8000
+  ]
+}

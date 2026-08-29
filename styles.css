@@ -48,6 +48,26 @@ html {
     scroll-behavior: smooth;
 }
 
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: -40px;
+    z-index: 400;
+    padding: 8px 12px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 body {
     font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--bg-secondary);
@@ -296,6 +316,11 @@ a {
 .news-category.product { background: #f3e5f5; color: #7b1fa2; }
 .news-category.tech { background: #e8f5e9; color: #388e3c; }
 .news-category.opinion { background: #fff3e0; color: #f57c00; }
+
+[data-theme="dark"] .news-category.industry { background: #16324d; color: #90caf9; }
+[data-theme="dark"] .news-category.product { background: #3a1d47; color: #ce93d8; }
+[data-theme="dark"] .news-category.tech { background: #1b3a24; color: #a5d6a7; }
+[data-theme="dark"] .news-category.opinion { background: #4a3016; color: #ffcc80; }
 
 .news-hot {
     font-size: 11px;
@@ -554,9 +579,15 @@ a {
     display: block;
 }
 
-.empty-state p {
+.empty-state p,
+.error-state p {
     color: var(--text-tertiary);
     font-size: 14px;
+}
+
+.error-state {
+    text-align: center;
+    padding: 24px 20px 8px;
 }
 
 /* ==========================================

@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "status": "active",
+  "stopRequested": false,
+  "branch": "cursor/continuous-optimization-loop-dc56",
+  "cycle": 1,
+  "assignedPhase": "product",
+  "lastRunAt": "2026-08-29T00:20:00.000Z",
+  "lastChange": "建立优化闭环；恢复 RSS 管线；修复刷新假数据、Pages 路径与部署竞态；补齐 SEO/无障碍/错误态与质量门禁",
+  "qualityBar": 90,
+  "scores": {
+    "pipeline": 78,
+    "content": 40,
+    "ux": 70,
+    "a11y": 72,
+    "seo": 74,
+    "reliability": 70
+  },
+  "completedIds": [
+    "p0-restore-fetch-scripts",
+    "p0-fix-refresh-mock",
+    "p0-fix-pages-base-path",
+    "p0-fix-deploy-job-race",
+    "p1-news-schema",
+    "p1-seo-basics",
+    "p1-a11y-basics",
+    "p1-dark-category-contrast",
+    "p1-empty-error-states"
+  ],
+  "target": {
+    "allScoresAtLeast": 90,
+    "noOpenP0orP1": true
+  }
+}
