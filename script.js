@@ -207,7 +207,7 @@ async function loadSourceStatus() {
             : `${okCount}/${total} 个源可达，失败：${failed.join('、')}`;
         widget.hidden = false;
     } catch {
-        widget.hidden = true;
+        text.textContent = '源状态暂不可用';
     }
 }
 
@@ -467,7 +467,7 @@ function createNewsItem(item) {
                     ${hotBadge}
                 </div>
                 <h2 class="news-title">${escapeHtml(item.title)}</h2>
-                ${item.titleEn && item.titleEn !== item.title ? `<p class="news-title-en">${escapeHtml(item.titleEn)}</p>` : ''}
+                <p class="news-title-en">${escapeHtml(item.titleEn && item.titleEn !== item.title ? item.titleEn : '\u00a0')}</p>
                 <p class="news-summary">${escapeHtml(item.summary)}</p>
                 <div class="news-meta">
                     <span class="news-source">${escapeHtml(item.source)}</span>
