@@ -5,16 +5,23 @@
   "branch": "cursor/continuous-optimization-loop-dc56",
   "cycle": 4,
   "assignedPhase": "polish",
-  "lastRunAt": "2026-08-29T00:40:00.000Z",
-  "lastChange": "去阻塞字体、JSON-LD、弹窗焦点陷阱、结果计数、过滤 HN [pdf]、写入抓取健康状态",
+  "lastRunAt": "2026-08-29T00:45:00.000Z",
+  "lastChange": "去阻塞字体、JSON-LD、焦点陷阱、结果计数；Lighthouse 移动端 performance 92 / a11y 95 / seo 100",
   "qualityBar": 90,
   "scores": {
     "pipeline": 90,
     "content": 80,
-    "ux": 84,
-    "a11y": 84,
-    "seo": 88,
+    "ux": 86,
+    "a11y": 90,
+    "seo": 92,
     "reliability": 82
+  },
+  "lighthouseMobile": {
+    "performance": 92,
+    "accessibility": 95,
+    "seo": 100,
+    "bestPractices": 100,
+    "measuredAt": "2026-08-29T00:45:00.000Z"
   },
   "completedIds": [
     "p0-restore-fetch-scripts",
