@@ -386,6 +386,22 @@ img.news-image {
     transition: var(--transition);
 }
 
+.news-title-en {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.source-status {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
 .news-item:hover .news-title {
     color: var(--primary);
 }

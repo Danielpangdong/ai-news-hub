@@ -22,7 +22,7 @@
   },
   {
     "id": 848643063,
-    "title": "Neocloud Lambda获得$ 10亿债务以购买更多芯片",
+    "title": "Neocloud Lambda secures $1B in debt to buy more chips",
     "titleEn": "Neocloud Lambda secures $1B in debt to buy more chips",
     "summary": "Neocloud Lambda has raised $1B in private debt to buy Nvidia AI chips and lease them to Microsoft. It's the latest in a string of loans, underscoring the high cost of the AI boom.",
     "summaryEn": "Neocloud Lambda has raised $1B in private debt to buy Nvidia AI chips and lease them to Microsoft. It's the latest in a string of loans, underscoring the high cost of the AI boom.",
@@ -66,7 +66,7 @@
   },
   {
     "id": 790036279,
-    "title": "开放式人工智能公司是硅谷最热门的收购目标",
+    "title": "Open-weight AI companies are the Valley’s hottest acquisition targets",
     "titleEn": "Open-weight AI companies are the Valley’s hottest acquisition targets",
     "summary": "There's a lot of capital pouring into the business of giving models away.",
     "summaryEn": "There's a lot of capital pouring into the business of giving models away.",
@@ -84,27 +84,6 @@
       "AI资讯"
     ],
     "content": "There's a lot of capital pouring into the business of giving models away."
-  },
-  {
-    "id": 542855475,
-    "title": "特朗普的EPA希望让数据中心隐藏其空气污染",
-    "titleEn": "Trump’s EPA wants to let data centers hide their air pollution",
-    "summary": "Just as new data centers face growing backlash from neighboring communities, the US Environmental Protection Agency (EPA) is about to make it harder for people to weigh in on any pollution those centers create. The EPA plans to toss out a federal rule requiring public notice and an opportunity to comment when certain industrial sites […]",
-    "summaryEn": "Just as new data centers face growing backlash from neighboring communities, the US Environmental Protection Agency (EPA) is about to make it harder for people to weigh in on any pollution those centers create. The EPA plans to toss out a federal rule requiring public notice and an opportunity to comment when certain industrial sites […]",
-    "category": "industry",
-    "source": "The Verge",
-    "sourceUrl": "https://www.theverge.com/ai-artificial-intelligence/986176/data-center-pollution-epa-rule-change-air-permit",
-    "url": "https://www.theverge.com/ai-artificial-intelligence/986176/data-center-pollution-epa-rule-change-air-permit",
-    "image": "📰",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T16:28:40.000Z",
-    "time": "7小时前",
-    "hot": false,
-    "tags": [
-      "AI资讯"
-    ],
-    "content": "Just as new data centers face growing backlash from neighboring communities, the US Environmental Protection Agency (EPA) is about to make it harder for people to weigh in on any pollution those centers create. The EPA plans to toss out a federal rule requiring public notice and an opportunity to comment when certain industrial sites […]"
   },
   {
     "id": 2057753493,
@@ -129,7 +108,7 @@
   },
   {
     "id": 798125596,
-    "title": "谷歌的人工智能笔记应用程序现在允许您与书籍互动",
+    "title": "Google’s AI note-taking app now allows you to interact with books",
     "titleEn": "Google’s AI note-taking app now allows you to interact with books",
     "summary": "Google's AI note-taking app, Gemini Notebook, can now pull information from the books you've purchased. The new \"Expert Intelligence\" feature allows you to bring titles from Google Play Books directly into Gemini Notebook, which means you can ask questions about the material, as well as generate plans, infographics, AI podcasts, and more based on their […]",
     "summaryEn": "Google's AI note-taking app, Gemini Notebook, can now pull information from the books you've purchased. The new \"Expert Intelligence\" feature allows you to bring titles from Google Play Books directly into Gemini Notebook, which means you can ask questions about the material, as well as generate plans, infographics, AI podcasts, and more based on their […]",
@@ -191,28 +170,6 @@
       "AI芯片"
     ],
     "content": "Hot Chips 2026: Cerebras lays out the future of wafer-scale AI"
-  },
-  {
-    "id": 1575634495,
-    "title": "下载：一种秘密的抗衰老药物和加入虚拟发电厂",
-    "titleEn": "The Download: a secretive antiaging drug and joining virtual power plants",
-    "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A startup claims it’s found a drug to make your blood young —Antonio Regalado I knew I’d officially become a “longevity influencer” when a company called Generation Lab offered me the…",
-    "summaryEn": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A startup claims it’s found a drug to make your blood young —Antonio Regalado I knew I’d officially become a “longevity influencer” when a company called Generation Lab offered me the…",
-    "category": "tech",
-    "source": "MIT Technology Review",
-    "sourceUrl": "https://www.technologyreview.com/2026/08/28/1143113/the-download-antiaging-drug-joining-virtual-power-plants/",
-    "url": "https://www.technologyreview.com/2026/08/28/1143113/the-download-antiaging-drug-joining-virtual-power-plants/",
-    "image": "📰",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T12:35:27.000Z",
-    "time": "11小时前",
-    "hot": false,
-    "tags": [
-      "AI医疗",
-      "AGI"
-    ],
-    "content": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A startup claims it’s found a drug to make your blood young —Antonio Regalado I knew I’d officially become a “longevity influencer” when a company called Generation Lab offered me the…"
   },
   {
     "id": 946548067,
@@ -344,27 +301,6 @@
     "content": "AI and Cognitive Science Redefine Knowledge Retention"
   },
   {
-    "id": 1303978262,
-    "title": "如何注册虚拟发电厂，并决定是否应该",
-    "titleEn": "How to sign up for a virtual power plant—and decide whether you should",
-    "summary": "MIT Technology Review’s How To series helps you get things done. Your thermostat may not look like a power plant. Neither does your electric vehicle, home battery, or HVAC system. But utility and energy companies increasingly want to treat them like one. A virtual power plant, or VPP, is a collection of household devices (such…",
-    "summaryEn": "MIT Technology Review’s How To series helps you get things done. Your thermostat may not look like a power plant. Neither does your electric vehicle, home battery, or HVAC system. But utility and energy companies increasingly want to treat them like one. A virtual power plant, or VPP, is a collection of household devices (such…",
-    "category": "opinion",
-    "source": "MIT Technology Review",
-    "sourceUrl": "https://www.technologyreview.com/2026/08/28/1142956/how-to-sign-up-for-a-virtual-power-plant-and-decide-whether-you-should/",
-    "url": "https://www.technologyreview.com/2026/08/28/1142956/how-to-sign-up-for-a-virtual-power-plant-and-decide-whether-you-should/",
-    "image": "📰",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T09:00:00.000Z",
-    "time": "15小时前",
-    "hot": false,
-    "tags": [
-      "AI资讯"
-    ],
-    "content": "MIT Technology Review’s How To series helps you get things done. Your thermostat may not look like a power plant. Neither does your electric vehicle, home battery, or HVAC system. But utility and energy companies increasingly want to treat them like one. A virtual power plant, or VPP, is a collection of household devices (such…"
-  },
-  {
     "id": 2078543612,
     "title": "一名法官阻止了五角大楼将 Anthropic 列入黑名单的企图",
     "titleEn": "A Judge Has Blocked the Pentagon’s Attempt to Blacklist Anthropic",
@@ -406,27 +342,6 @@
       "AI医疗"
     ],
     "content": "OpenAI and Thailand’s MHESI launch an eight-week accelerator helping 10 health, wellness, and education startups turn AI prototypes into trusted products."
-  },
-  {
-    "id": 210048558,
-    "title": "开放式ASR排行榜增加了其首个全球南方语言",
-    "titleEn": "The Open ASR Leaderboard Adds Its First Global South Language",
-    "summary": "The Open ASR Leaderboard Adds Its First Global South Language",
-    "summaryEn": "The Open ASR Leaderboard Adds Its First Global South Language",
-    "category": "tech",
-    "source": "Hugging Face",
-    "sourceUrl": "https://huggingface.co/blog/open-asr-leaderboard-global-south",
-    "url": "https://huggingface.co/blog/open-asr-leaderboard-global-south",
-    "image": "📰",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T00:00:00.000Z",
-    "time": "1天前",
-    "hot": false,
-    "tags": [
-      "AI资讯"
-    ],
-    "content": "The Open ASR Leaderboard Adds Its First Global South Language"
   },
   {
     "id": 2054473191,
@@ -556,26 +471,5 @@
       "AI资讯"
     ],
     "content": "Training and Finetuning Multi-Vector Embedding Models with Sentence Transformers"
-  },
-  {
-    "id": 397181778,
-    "title": "使用Google搜索升级家居装饰的5种方法",
-    "titleEn": "5 ways to upgrade your home decor with Google Search",
-    "summary": "Learn how to use Google Search tools to find home decor inspiration, shop for furniture, and tackle DIY projects.",
-    "summaryEn": "Learn how to use Google Search tools to find home decor inspiration, shop for furniture, and tackle DIY projects.",
-    "category": "opinion",
-    "source": "Google AI",
-    "sourceUrl": "https://blog.google/products-and-platforms/products/search/home-decor-tips/",
-    "url": "https://blog.google/products-and-platforms/products/search/home-decor-tips/",
-    "image": "📰",
-    "cover": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Home_Decor.max-600x600.format-webp.webp",
-    "date": "2026-08-25",
-    "publishedAt": "2026-08-25T16:00:00.000Z",
-    "time": "3天前",
-    "hot": false,
-    "tags": [
-      "Google"
-    ],
-    "content": "Learn how to use Google Search tools to find home decor inspiration, shop for furniture, and tackle DIY projects."
   }
 ]

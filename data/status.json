@@ -1,6 +1,52 @@
 {
-  "fetchedAt": "2026-08-29T00:32:00.000Z",
-  "itemCount": 27,
+  "fetchedAt": "2026-08-29T00:44:09.161Z",
+  "itemCount": 22,
   "failedSources": [],
-  "note": "status is rewritten on each successful fetch-news run"
+  "sources": [
+    {
+      "name": "TechCrunch AI",
+      "ok": true,
+      "count": 6
+    },
+    {
+      "name": "The Verge",
+      "ok": true,
+      "count": 2
+    },
+    {
+      "name": "MIT Technology Review",
+      "ok": true,
+      "count": 0
+    },
+    {
+      "name": "Wired",
+      "ok": true,
+      "count": 4
+    },
+    {
+      "name": "Ars Technica",
+      "ok": true,
+      "count": 2
+    },
+    {
+      "name": "OpenAI",
+      "ok": true,
+      "count": 2
+    },
+    {
+      "name": "Google AI",
+      "ok": true,
+      "count": 1
+    },
+    {
+      "name": "Hugging Face",
+      "ok": true,
+      "count": 1
+    },
+    {
+      "name": "Hacker News",
+      "ok": true,
+      "count": 4
+    }
+  ]
 }

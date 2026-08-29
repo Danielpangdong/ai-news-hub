@@ -38,13 +38,15 @@ const RSS_SOURCES = [
         name: 'MIT Technology Review',
         url: 'https://www.technologyreview.com/feed/',
         category: 'tech',
-        weight: 3
+        weight: 3,
+        strictTopic: true
     },
     {
         name: 'Wired',
         url: 'https://www.wired.com/feed/tag/ai/latest/rss',
         category: 'tech',
-        weight: 2
+        weight: 2,
+        strictTopic: true
     },
     {
         name: 'Ars Technica',
@@ -62,7 +64,8 @@ const RSS_SOURCES = [
         name: 'Google AI',
         url: 'https://blog.google/technology/ai/rss/',
         category: 'product',
-        weight: 3
+        weight: 3,
+        strictTopic: true
     },
     {
         name: 'Hugging Face',
@@ -208,6 +211,10 @@ function parseFeed(xml, source) {
             continue;
         }
 
+        if (source.strictTopic && !isOnTopic(title, stripHtml(rawDesc))) {
+            continue;
+        }
+
         items.push({
             title,
             link,
@@ -248,6 +255,22 @@ function extractCover(itemXml, rawDesc) {
         }
     }
     return '';
+}
+
+function isOnTopic(title, summary) {
+    const text = `${title} ${summary}`.toLowerCase();
+    return /ai\b|artificial intelligence|machine learning|llm|gpt|claude|gemini|openai|anthropic|nvidia|deepmind|robot|neural|model|chip|gpu|agent|chatgpt|transformer/.test(text)
+        || /人工智能|大模型|芯片|机器人/.test(text);
+}
+
+function isHighQualityTranslation(original, translated) {
+    if (!translated || translated === original || !looksChinese(translated)) {
+        return false;
+    }
+    if (/¤|需翻译|MYMEMORY|获得\$|开放式人工智能|允许您/.test(translated)) {
+        return false;
+    }
+    return true;
 }
 
 function classifyArticle(title, summary, fallback) {
@@ -476,10 +499,19 @@ async function fetchHackerNews() {
 
 async function fetchSource(source) {
     console.log(`抓取: ${source.name}`);
-    const xml = await requestText(source.url);
-    const items = parseFeed(xml, source);
-    console.log(`   得到 ${items.length} 条`);
-    return items;
+    try {
+        const xml = await requestText(source.url);
+        const items = parseFeed(xml, source);
+        console.log(`   得到 ${items.length} 条`);
+        return items;
+    } catch (error) {
+        console.log(`   重试: ${error.message}`);
+        await new Promise((resolve) => setTimeout(resolve, 700));
+        const xml = await requestText(source.url);
+        const items = parseFeed(xml, source);
+        console.log(`   重试后 ${items.length} 条`);
+        return items;
+    }
 }
 
 function diversifyBySource(items, max) {
@@ -584,7 +616,8 @@ async function main() {
 
     const news = [];
     for (const item of selected) {
-        const titleZh = restoreKnownBrands(item.title, await translateText(item.title, translationCache));
+        const rawTitleZh = restoreKnownBrands(item.title, await translateText(item.title, translationCache));
+        const titleZh = isHighQualityTranslation(item.title, rawTitleZh) ? rawTitleZh : item.title;
         await new Promise((resolve) => setTimeout(resolve, 200));
         const summarySource = item.description || item.title;
         const summaryZh = summarySource;

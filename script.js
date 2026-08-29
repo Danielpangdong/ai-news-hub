@@ -185,6 +185,31 @@ function newsJsonUrl() {
     return new URL('data/news.json', window.location.href).toString();
 }
 
+async function loadSourceStatus() {
+    const widget = document.getElementById('sourceStatusWidget');
+    const text = document.getElementById('sourceStatusText');
+    if (!widget || !text) {
+        return;
+    }
+    try {
+        const response = await fetch(new URL('data/status.json', window.location.href).toString(), { cache: 'no-store' });
+        if (!response.ok) {
+            return;
+        }
+        const status = await response.json();
+        const sources = Array.isArray(status.sources) ? status.sources : [];
+        const failed = Array.isArray(status.failedSources) ? status.failedSources : sources.filter((item) => !item.ok).map((item) => item.name);
+        const total = sources.length || 9;
+        const okCount = total - failed.length;
+        text.textContent = failed.length === 0
+            ? `${okCount}/${total} 个源正常`
+            : `${okCount}/${total} 个源正常，失败：${failed.join('、')}`;
+        widget.hidden = false;
+    } catch {
+        widget.hidden = true;
+    }
+}
+
 function normalizeNewsList(payload) {
     if (!Array.isArray(payload)) {
         throw new Error('资讯数据格式无效');
@@ -225,6 +250,7 @@ async function initData() {
     try {
         const list = await loadNewsFromFile();
         applyNewsData(list, 'file');
+        await loadSourceStatus();
         return;
     } catch (error) {
         console.warn('从文件加载失败，尝试本地缓存', error);
@@ -440,6 +466,7 @@ function createNewsItem(item) {
                     ${hotBadge}
                 </div>
                 <h2 class="news-title">${escapeHtml(item.title)}</h2>
+                ${item.titleEn && item.titleEn !== item.title ? `<p class="news-title-en">${escapeHtml(item.titleEn)}</p>` : ''}
                 <p class="news-summary">${escapeHtml(item.summary)}</p>
                 <div class="news-meta">
                     <span class="news-source">${escapeHtml(item.source)}</span>
