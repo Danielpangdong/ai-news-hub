@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'ai-news-hub-v1';
+const CACHE_NAME = 'ai-news-hub-v2';
 const CORE_ASSETS = [
     './',
     './index.html',

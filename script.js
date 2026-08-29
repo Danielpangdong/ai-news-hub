@@ -307,9 +307,29 @@ function initEventListeners() {
         });
     });
     
-    // ESC 关闭弹窗
+    // ESC 关闭弹窗，Tab 限制在弹窗内
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+        const modal = document.getElementById('detailModal');
+        if (e.key === 'Escape') {
+            closeModal();
+            return;
+        }
+        if (e.key !== 'Tab' || !modal.classList.contains('active')) {
+            return;
+        }
+        const focusable = [...modal.querySelectorAll('button, a[href]')].filter((el) => el.offsetParent !== null);
+        if (focusable.length === 0) {
+            return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
     });
 }
 
@@ -373,10 +393,18 @@ function renderNewsList() {
         if (emptyStateText) {
             emptyStateText.textContent = searchQuery ? '没有匹配的资讯' : '暂无该分类资讯';
         }
+        const emptyCount = document.getElementById('resultCount');
+        if (emptyCount) {
+            emptyCount.textContent = '共 0 条';
+        }
         return;
     }
     
     emptyState.style.display = 'none';
+    const resultCount = document.getElementById('resultCount');
+    if (resultCount) {
+        resultCount.textContent = `共 ${filteredData.length} 条`;
+    }
     container.innerHTML = filteredData.map(item => createNewsItem(item)).join('');
     
     // 绑定点击事件
@@ -482,6 +510,10 @@ function toggleTheme() {
 function updateThemeIcon(theme) {
     const icon = document.querySelector('.theme-icon');
     icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    const themeColor = document.getElementById('themeColorMeta');
+    if (themeColor) {
+        themeColor.setAttribute('content', theme === 'dark' ? '#1a1a1a' : '#e74c3c');
+    }
 }
 
 function setCategory(category) {
@@ -515,6 +547,10 @@ function showDetail(item) {
     
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    const closeBtn = document.getElementById('modalClose');
+    if (closeBtn) {
+        closeBtn.focus();
+    }
 }
 
 function renderModalContent() {

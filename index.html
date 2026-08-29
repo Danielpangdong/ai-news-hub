@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 深观察 - 每日精选全球AI资讯</title>
     <meta name="description" content="汇集全球AI领域最有价值的洞见与资讯，每日自动更新">
-    <meta name="theme-color" content="#e74c3c">
+    <meta name="theme-color" content="#e74c3c" id="themeColorMeta">
+    <meta name="color-scheme" content="light dark">
     <link rel="canonical" href="https://danielpangdong.github.io/ai-news-hub/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="AI 深观察 - 每日精选全球AI资讯">
@@ -16,10 +17,22 @@
     <meta name="twitter:title" content="AI 深观察">
     <meta name="twitter:description" content="每日精选全球AI资讯">
     <meta name="twitter:image" content="https://danielpangdong.github.io/ai-news-hub/assets/og.svg">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=optional" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=optional"></noscript>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AI 深观察",
+      "url": "https://danielpangdong.github.io/ai-news-hub/",
+      "description": "每日精选全球 AI 资讯与洞见",
+      "inLanguage": "zh-CN"
+    }
+    </script>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="apple-touch-icon" href="assets/favicon.svg">
     <link rel="manifest" href="manifest.json">
@@ -63,7 +76,10 @@
                 <div class="news-section">
                     <div class="section-header">
                         <h1 class="section-title">今日精选</h1>
-                        <span class="update-time" id="updateTime">更新于：加载中...</span>
+                        <div class="section-meta">
+                            <span class="update-time" id="updateTime">更新于：加载中...</span>
+                            <span class="result-count" id="resultCount" aria-live="polite"></span>
+                        </div>
                     </div>
                     
                     <div class="news-list" id="newsList">
@@ -188,8 +204,8 @@
         <div class="modal-content">
             <button type="button" class="modal-close" id="modalClose" aria-label="关闭详情">&times;</button>
             <div class="modal-lang-toggle" id="langToggle" style="display: none;">
-                <button class="lang-btn active" data-lang="zh">中文</button>
-                <button class="lang-btn" data-lang="en">English</button>
+                <button type="button" class="lang-btn active" data-lang="zh">中文</button>
+                <button type="button" class="lang-btn" data-lang="en">English</button>
             </div>
             <div class="modal-body" id="modalBody">
                 <!-- 动态内容 -->

@@ -3,18 +3,18 @@
   "status": "active",
   "stopRequested": false,
   "branch": "cursor/continuous-optimization-loop-dc56",
-  "cycle": 3,
+  "cycle": 4,
   "assignedPhase": "polish",
-  "lastRunAt": "2026-08-29T00:30:00.000Z",
-  "lastChange": "新增 OpenAI/Google/HF/HN 信源、品牌保护翻译、封面图、PWA/sitemap、移动端精简侧栏",
+  "lastRunAt": "2026-08-29T00:40:00.000Z",
+  "lastChange": "去阻塞字体、JSON-LD、弹窗焦点陷阱、结果计数、过滤 HN [pdf]、写入抓取健康状态",
   "qualityBar": 90,
   "scores": {
     "pipeline": 90,
-    "content": 76,
-    "ux": 78,
-    "a11y": 76,
-    "seo": 82,
-    "reliability": 78
+    "content": 80,
+    "ux": 84,
+    "a11y": 84,
+    "seo": 88,
+    "reliability": 82
   },
   "completedIds": [
     "p0-restore-fetch-scripts",
@@ -37,7 +37,8 @@
     "p3-sitemap-robots",
     "p3-content-dedup",
     "p3-images",
-    "p3-readme-live-url"
+    "p3-readme-live-url",
+    "p3-performance"
   ],
   "target": {
     "allScoresAtLeast": 90,

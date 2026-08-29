@@ -325,6 +325,7 @@ function restoreKnownBrands(original, translated) {
     let result = String(translated || '');
     if (/anthropic/i.test(original)) {
         result = result.replace(/人类学/g, 'Anthropic');
+        result = result.replace(/将人类列入黑名单/g, '将 Anthropic 列入黑名单');
     }
     if (/openai/i.test(original)) {
         result = result.replace(/开放人工智能|开放AI/g, 'OpenAI');
@@ -468,7 +469,7 @@ async function fetchHackerNews() {
                 weight: source.weight
             };
         })
-        .filter((item) => item.title && item.link);
+        .filter((item) => item.title && item.link && !/\[[^\]]*(pdf|video)[^\]]*\]/i.test(item.title));
     console.log(`   得到 ${items.length} 条`);
     return items;
 }
@@ -526,21 +527,27 @@ async function main() {
     const translationCache = loadJson(CACHE_PATH, {});
     const existing = loadJson(OUTPUT_PATH, []);
     const collected = [];
+    const sourceHealth = [];
 
     for (const source of RSS_SOURCES) {
         try {
             const items = await fetchSource(source);
             collected.push(...items);
+            sourceHealth.push({ name: source.name, ok: true, count: items.length });
             await new Promise((resolve) => setTimeout(resolve, 400));
         } catch (error) {
             console.log(`   失败: ${error.message}`);
+            sourceHealth.push({ name: source.name, ok: false, count: 0, error: error.message });
         }
     }
 
     try {
-        collected.push(...await fetchHackerNews());
+        const hnItems = await fetchHackerNews();
+        collected.push(...hnItems);
+        sourceHealth.push({ name: 'Hacker News', ok: true, count: hnItems.length });
     } catch (error) {
         console.log(`   失败: ${error.message}`);
+        sourceHealth.push({ name: 'Hacker News', ok: false, count: 0, error: error.message });
     }
 
     const unique = [];
@@ -607,6 +614,12 @@ async function main() {
     saveJson(OUTPUT_PATH, news);
     saveJson(CACHE_PATH, translationCache);
     writeSitemap(news);
+    saveJson(path.join(__dirname, '..', 'data', 'status.json'), {
+        fetchedAt: new Date().toISOString(),
+        itemCount: news.length,
+        failedSources: sourceHealth.filter((item) => !item.ok).map((item) => item.name),
+        sources: sourceHealth
+    });
 
     const byCategory = {};
     news.forEach((item) => {
