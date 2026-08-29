@@ -16,35 +16,59 @@ const CACHE_PATH = path.join(__dirname, '..', 'data', 'translation_cache.json');
 const USER_AGENT = 'AINewsHub/1.0 (+https://github.com/Danielpangdong/ai-news-hub)';
 const REQUEST_TIMEOUT_MS = 12000;
 const MAX_REDIRECTS = 4;
-const MAX_ITEMS = 24;
+const MAX_ITEMS = 28;
 const MAX_AGE_HOURS = 168;
 const TRANSLATE_ENABLED = process.env.AI_NEWS_TRANSLATE !== '0';
+const SITE_ORIGIN = 'https://danielpangdong.github.io/ai-news-hub';
 
 const RSS_SOURCES = [
     {
         name: 'TechCrunch AI',
         url: 'https://techcrunch.com/category/artificial-intelligence/feed/',
-        category: 'industry'
+        category: 'industry',
+        weight: 3
     },
     {
         name: 'The Verge',
         url: 'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml',
-        category: 'industry'
+        category: 'industry',
+        weight: 3
     },
     {
         name: 'MIT Technology Review',
         url: 'https://www.technologyreview.com/feed/',
-        category: 'tech'
+        category: 'tech',
+        weight: 3
     },
     {
         name: 'Wired',
         url: 'https://www.wired.com/feed/tag/ai/latest/rss',
-        category: 'tech'
+        category: 'tech',
+        weight: 2
     },
     {
         name: 'Ars Technica',
         url: 'https://arstechnica.com/tag/ai/feed/',
-        category: 'tech'
+        category: 'tech',
+        weight: 2
+    },
+    {
+        name: 'OpenAI',
+        url: 'https://openai.com/news/rss.xml',
+        category: 'product',
+        weight: 4
+    },
+    {
+        name: 'Google AI',
+        url: 'https://blog.google/technology/ai/rss/',
+        category: 'product',
+        weight: 3
+    },
+    {
+        name: 'Hugging Face',
+        url: 'https://huggingface.co/blog/feed.xml',
+        category: 'tech',
+        weight: 2
     }
 ];
 
@@ -188,13 +212,42 @@ function parseFeed(xml, source) {
             title,
             link,
             description: stripHtml(rawDesc).slice(0, 420),
+            cover: extractCover(block.xml, rawDesc),
             publishedAt,
             source: source.name,
-            sourceCategory: source.category
+            sourceCategory: source.category,
+            weight: source.weight || 1
         });
     }
 
-    return items.slice(0, 8);
+    return items.slice(0, 6);
+}
+
+function extractCover(itemXml, rawDesc) {
+    const candidates = [
+        firstMatch(itemXml, /<media:content[^>]+url=["']([^"']+)["']/i),
+        firstMatch(itemXml, /<media:thumbnail[^>]+url=["']([^"']+)["']/i),
+        firstMatch(itemXml, /<enclosure[^>]+url=["']([^"']+)["'][^>]*type=["']image/i),
+        firstMatch(itemXml, /<enclosure[^>]+type=["']image[^"']*["'][^>]+url=["']([^"']+)["']/i)
+    ];
+    const htmlImg = String(rawDesc || '').match(/<img[^>]+src=["']([^"']+)["']/i);
+    if (htmlImg) {
+        candidates.push(decodeEntities(htmlImg[1]));
+    }
+    for (const value of candidates) {
+        if (!value) {
+            continue;
+        }
+        try {
+            const url = new URL(value);
+            if (url.protocol === 'http:' || url.protocol === 'https:') {
+                return url.toString();
+            }
+        } catch {
+            continue;
+        }
+    }
+    return '';
 }
 
 function classifyArticle(title, summary, fallback) {
@@ -268,30 +321,99 @@ function saveJson(filePath, value) {
     fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
 }
 
+function restoreKnownBrands(original, translated) {
+    let result = String(translated || '');
+    if (/anthropic/i.test(original)) {
+        result = result.replace(/人类学/g, 'Anthropic');
+    }
+    if (/openai/i.test(original)) {
+        result = result.replace(/开放人工智能|开放AI/g, 'OpenAI');
+    }
+    if (/hugging\s*face/i.test(original)) {
+        result = result.replace(/拥抱脸|拥抱面孔/g, 'Hugging Face');
+    }
+    return result;
+}
+
 function looksChinese(text) {
     const han = (text.match(/[\u4e00-\u9fff]/g) || []).length;
     return han > 0 && han / Math.max(text.length, 1) > 0.15;
 }
 
+const GLOSSARY = [
+    ['artificial intelligence', '人工智能'],
+    ['machine learning', '机器学习'],
+    ['large language model', '大语言模型'],
+    ['open source', '开源'],
+    ['data center', '数据中心']
+];
+
+const BRAND_LOCKS = [
+    ['Anthropic', '¤BRAND_ANTHROPIC¤'],
+    ['OpenAI', '¤BRAND_OPENAI¤'],
+    ['DeepMind', '¤BRAND_DEEPMIND¤'],
+    ['NVIDIA', '¤BRAND_NVIDIA¤'],
+    ['Nvidia', '¤BRAND_NVIDIA¤'],
+    ['Hugging Face', '¤BRAND_HF¤'],
+    ['Hacker News', '¤BRAND_HN¤']
+];
+
+function applyGlossary(text) {
+    let result = text;
+    GLOSSARY.forEach(([en, zh]) => {
+        result = result.replace(new RegExp(en, 'ig'), zh);
+    });
+    return result;
+}
+
+function isUsableTranslation(original, translated) {
+    if (typeof translated !== 'string') {
+        return false;
+    }
+    const cleaned = translated.trim();
+    if (!cleaned || /MYMEMORY WARNING|QUERY LENGTH|INVALID/i.test(cleaned)) {
+        return false;
+    }
+    if (cleaned === original) {
+        return false;
+    }
+    return looksChinese(cleaned);
+}
+
 async function translateText(text, cache) {
-    if (!TRANSLATE_ENABLED || !text || looksChinese(text)) {
+    if (!text) {
+        return text;
+    }
+    if (!TRANSLATE_ENABLED || looksChinese(text)) {
         return text;
     }
 
     const cacheKey = text.slice(0, 180);
-    if (cache[cacheKey]) {
+    if (cache[cacheKey] && isUsableTranslation(text, cache[cacheKey])) {
         return cache[cacheKey];
     }
 
-    const endpoint = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text.slice(0, 400))}&langpair=en|zh-CN`;
+    let locked = text;
+    BRAND_LOCKS.forEach(([brand, token]) => {
+        locked = locked.replace(new RegExp(brand.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), token);
+    });
+
+    const endpoint = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(locked.slice(0, 320))}&langpair=en|zh-CN`;
 
     try {
         const raw = await requestText(endpoint);
         const payload = JSON.parse(raw);
         const translated = payload && payload.responseData && payload.responseData.translatedText;
-        if (typeof translated === 'string' && translated.trim() && !/MYMEMORY WARNING/i.test(translated)) {
-            cache[cacheKey] = translated.trim();
-            return cache[cacheKey];
+        if (isUsableTranslation(text, translated) || (typeof translated === 'string' && /¤BRAND_/.test(translated))) {
+            let restored = applyGlossary(String(translated).trim());
+            BRAND_LOCKS.forEach(([brand, token]) => {
+                restored = restored.split(token).join(brand);
+            });
+            restored = restored.replace(/人类学/g, text.includes('Anthropic') ? 'Anthropic' : '人类学');
+            if (isUsableTranslation(text, restored) || /[\u4e00-\u9fff]/.test(restored)) {
+                cache[cacheKey] = restored;
+                return restored;
+            }
         }
     } catch (error) {
         console.log(`   翻译跳过: ${error.message}`);
@@ -312,8 +434,43 @@ function stableId(url) {
 function isHot(item) {
     const ageHours = (Date.now() - item.publishedAt.getTime()) / (1000 * 60 * 60);
     const text = `${item.title} ${item.description}`.toLowerCase();
-    const notable = /openai|anthropic|google|nvidia|meta|microsoft|apple|deepmind/.test(text);
-    return ageHours < 18 && notable;
+    const notable = /openai|anthropic|google|nvidia|meta|microsoft|apple|deepmind|hugging face/.test(text);
+    return (ageHours < 18 && notable) || ((item.weight || 1) >= 4 && ageHours < 36);
+}
+
+function titleKey(title) {
+    return String(title)
+        .toLowerCase()
+        .replace(/[^a-z0-9\u4e00-\u9fff]+/g, ' ')
+        .trim()
+        .slice(0, 56);
+}
+
+async function fetchHackerNews() {
+    const source = { name: 'Hacker News', category: 'opinion', weight: 2 };
+    console.log(`抓取: ${source.name}`);
+    const url = 'https://hn.algolia.com/api/v1/search_by_date?query=%22artificial%20intelligence%22&tags=story&hitsPerPage=8';
+    const raw = await requestText(url);
+    const payload = JSON.parse(raw);
+    const hits = Array.isArray(payload.hits) ? payload.hits : [];
+    const items = hits
+        .map((hit) => {
+            const link = hit.url || `https://news.ycombinator.com/item?id=${hit.objectID}`;
+            const publishedAt = hit.created_at ? new Date(hit.created_at) : new Date();
+            return {
+                title: stripHtml(hit.title || ''),
+                link,
+                description: stripHtml(hit.story_text || hit.title || '').slice(0, 420),
+                cover: '',
+                publishedAt,
+                source: source.name,
+                sourceCategory: source.category,
+                weight: source.weight
+            };
+        })
+        .filter((item) => item.title && item.link);
+    console.log(`   得到 ${items.length} 条`);
+    return items;
 }
 
 async function fetchSource(source) {
@@ -322,6 +479,46 @@ async function fetchSource(source) {
     const items = parseFeed(xml, source);
     console.log(`   得到 ${items.length} 条`);
     return items;
+}
+
+function diversifyBySource(items, max) {
+    const grouped = new Map();
+    items.forEach((item) => {
+        const list = grouped.get(item.source) || [];
+        list.push(item);
+        grouped.set(item.source, list);
+    });
+
+    const picked = [];
+    const seen = new Set();
+    grouped.forEach((list) => {
+        list.slice(0, 2).forEach((item) => {
+            if (picked.length < max) {
+                picked.push(item);
+                seen.add(item.link);
+            }
+        });
+    });
+
+    items.forEach((item) => {
+        if (picked.length >= max || seen.has(item.link)) {
+            return;
+        }
+        picked.push(item);
+        seen.add(item.link);
+    });
+
+    return picked.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+}
+
+function writeSitemap(news) {
+    const urls = [
+        `${SITE_ORIGIN}/`,
+        ...news.slice(0, 20).map((item) => item.url)
+    ];
+    const body = urls.map((loc) => `  <url><loc>${loc.replace(/&/g, '&amp;')}</loc></url>`).join('\n');
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
+    fs.writeFileSync(path.join(__dirname, '..', 'sitemap.xml'), xml);
 }
 
 async function main() {
@@ -340,24 +537,36 @@ async function main() {
         }
     }
 
+    try {
+        collected.push(...await fetchHackerNews());
+    } catch (error) {
+        console.log(`   失败: ${error.message}`);
+    }
+
     const unique = [];
     const seenUrls = new Set();
     const seenTitles = new Set();
 
     collected
-        .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+        .sort((a, b) => {
+            const recency = b.publishedAt.getTime() - a.publishedAt.getTime();
+            if (Math.abs(recency) < 6 * 60 * 60 * 1000) {
+                return (b.weight || 1) - (a.weight || 1);
+            }
+            return recency;
+        })
         .forEach((item) => {
             const urlKey = item.link.split('?')[0];
-            const titleKey = item.title.toLowerCase().slice(0, 48);
-            if (seenUrls.has(urlKey) || seenTitles.has(titleKey)) {
+            const key = titleKey(item.title);
+            if (seenUrls.has(urlKey) || seenTitles.has(key)) {
                 return;
             }
             seenUrls.add(urlKey);
-            seenTitles.add(titleKey);
+            seenTitles.add(key);
             unique.push(item);
         });
 
-    const selected = unique.slice(0, MAX_ITEMS);
+    const selected = diversifyBySource(unique, MAX_ITEMS);
     if (selected.length === 0) {
         console.log('未抓到新资讯，保留现有 data/news.json');
         if (!Array.isArray(existing) || existing.length === 0) {
@@ -368,9 +577,10 @@ async function main() {
 
     const news = [];
     for (const item of selected) {
-        const titleZh = await translateText(item.title, translationCache);
+        const titleZh = restoreKnownBrands(item.title, await translateText(item.title, translationCache));
+        await new Promise((resolve) => setTimeout(resolve, 200));
         const summarySource = item.description || item.title;
-        const summaryZh = await translateText(summarySource, translationCache);
+        const summaryZh = summarySource;
         const category = classifyArticle(item.title, item.description, item.sourceCategory);
 
         news.push({
@@ -384,6 +594,7 @@ async function main() {
             sourceUrl: item.link,
             url: item.link,
             image: getEmoji(item.title),
+            cover: item.cover || '',
             date: item.publishedAt.toISOString().split('T')[0],
             publishedAt: item.publishedAt.toISOString(),
             time: formatTime(item.publishedAt),
@@ -395,6 +606,7 @@ async function main() {
 
     saveJson(OUTPUT_PATH, news);
     saveJson(CACHE_PATH, translationCache);
+    writeSitemap(news);
 
     const byCategory = {};
     news.forEach((item) => {

@@ -1,0 +1,19 @@
+{
+  "name": "AI 深观察",
+  "short_name": "AI深观察",
+  "description": "每日精选全球 AI 资讯与洞见",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e74c3c",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

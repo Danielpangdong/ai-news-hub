@@ -20,18 +20,18 @@
 
 ## P2 — 体验与内容
 
-- [ ] p2-more-sources：增加 Hacker News Algolia、OpenAI / Google AI blog 等稳定源
-- [ ] p2-translation-fallback：可选翻译 API + 缓存；失败保留英文，不再写「需翻译」污染标题
-- [ ] p2-relative-time：按 `date`/`publishedAt` 实时计算「x 小时前」
-- [ ] p2-keyboard-list：列表可用键盘打开详情，焦点回到触发项
-- [ ] p2-mobile-nav：窄屏导航不挤压 Logo，搜索在移动端易用
-- [ ] p2-og-image-and-favicon：真实 favicon / apple-touch-icon，而不是仅 emoji data URI
+- [x] p2-more-sources：增加 Hacker News Algolia、OpenAI / Google AI blog 等稳定源
+- [x] p2-translation-fallback：可选翻译 API + 缓存；失败保留英文，不再写「需翻译」污染标题
+- [x] p2-relative-time：按 `date`/`publishedAt` 实时计算「x 小时前」
+- [x] p2-keyboard-list：列表可用键盘打开详情，焦点回到触发项
+- [x] p2-mobile-nav：窄屏导航不挤压 Logo，搜索在移动端易用
+- [x] p2-og-image-and-favicon：真实 favicon / apple-touch-icon，而不是仅 emoji data URI
 
 ## P3 — 最佳效果
 
-- [ ] p3-pwa-offline：manifest + service worker，离线可读最近缓存
-- [ ] p3-sitemap-robots：静态 sitemap.xml / robots.txt
+- [x] p3-pwa-offline：manifest + service worker，离线可读最近缓存
+- [x] p3-sitemap-robots：静态 sitemap.xml / robots.txt
 - [ ] p3-performance：字体与 CSS 不阻塞首屏，Lighthouse 性能 ≥ 90
-- [ ] p3-content-dedup：跨源标题相似度去重，热门按源权重而非随机
-- [ ] p3-images：RSS 封面图（防热链失败回退 emoji）
-- [ ] p3-readme-live-url：README 换成真实 Pages 地址与优化闭环说明
+- [x] p3-content-dedup：跨源标题相似度去重，热门按源权重而非随机
+- [x] p3-images：RSS 封面图（防热链失败回退 emoji）
+- [x] p3-readme-live-url：README 换成真实 Pages 地址与优化闭环说明

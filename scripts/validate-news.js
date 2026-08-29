@@ -75,6 +75,10 @@ function main() {
             fail(`${prefix} sourceUrl 非法: ${item.sourceUrl}`);
         }
 
+        if (item.cover && !isHttpUrl(item.cover)) {
+            fail(`${prefix} cover 非法: ${item.cover}`);
+        }
+
         if (!isIsoDate(item.date)) {
             fail(`${prefix} date 必须为 YYYY-MM-DD`);
         }

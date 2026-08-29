@@ -11,14 +11,18 @@
     <meta property="og:title" content="AI 深观察 - 每日精选全球AI资讯">
     <meta property="og:description" content="汇集全球AI领域最有价值的洞见与资讯，每日自动更新">
     <meta property="og:url" content="https://danielpangdong.github.io/ai-news-hub/">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://danielpangdong.github.io/ai-news-hub/assets/og.svg">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI 深观察">
     <meta name="twitter:description" content="每日精选全球AI资讯">
+    <meta name="twitter:image" content="https://danielpangdong.github.io/ai-news-hub/assets/og.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <a class="skip-link" href="#newsList">跳到资讯列表</a>
@@ -27,7 +31,7 @@
         <div class="container">
             <div class="header-inner">
                 <a href="./" class="logo">
-                    <span class="logo-icon" aria-hidden="true">🤖</span>
+                    <img class="logo-mark" src="assets/favicon.svg" width="28" height="28" alt="">
                     <span class="logo-text">AI 深观察</span>
                 </a>
                 <nav class="nav" aria-label="资讯分类">
@@ -107,7 +111,7 @@
                     </div>
 
                     <!-- 数据来源 -->
-                    <div class="widget">
+                    <div class="widget desktop-only">
                         <h3 class="widget-title">数据来源</h3>
                         <ul class="source-list">
                             <li class="source-item">
@@ -130,11 +134,27 @@
                                 <span class="source-dot" style="background: #9b59b6;"></span>
                                 <span>Wired</span>
                             </li>
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #10a37f;"></span>
+                                <span>OpenAI</span>
+                            </li>
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #4285f4;"></span>
+                                <span>Google AI</span>
+                            </li>
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #ffcc4d;"></span>
+                                <span>Hugging Face</span>
+                            </li>
+                            <li class="source-item">
+                                <span class="source-dot" style="background: #ff6600;"></span>
+                                <span>Hacker News</span>
+                            </li>
                         </ul>
                     </div>
 
                     <!-- 关于 -->
-                    <div class="widget about-widget">
+                    <div class="widget about-widget desktop-only">
                         <h3 class="widget-title">关于</h3>
                         <p class="about-text">
                             AI 深观察每日汇集全球最有价值的AI资讯与洞见，帮助您快速了解人工智能领域的最新动态。

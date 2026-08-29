@@ -350,7 +350,9 @@ function renderNewsList() {
             const tags = Array.isArray(item.tags) ? item.tags : [];
             return (
                 (item.title || '').toLowerCase().includes(searchQuery) ||
+                (item.titleEn || '').toLowerCase().includes(searchQuery) ||
                 (item.summary || '').toLowerCase().includes(searchQuery) ||
+                (item.summaryEn || '').toLowerCase().includes(searchQuery) ||
                 tags.some(tag => String(tag).toLowerCase().includes(searchQuery))
             );
         });
@@ -359,7 +361,9 @@ function renderNewsList() {
     // 按热度排序，再按时间
     filteredData.sort((a, b) => {
         if (a.hot !== b.hot) return b.hot ? 1 : -1;
-        return b.id - a.id;
+        const timeA = Date.parse(a.publishedAt || a.date || '') || 0;
+        const timeB = Date.parse(b.publishedAt || b.date || '') || 0;
+        return timeB - timeA;
     });
     
     // 渲染
@@ -393,10 +397,15 @@ function createNewsItem(item) {
     const categoryClass = categoryStyles[item.category] || '';
     const hotBadge = item.hot ? '<span class="news-hot">热门</span>' : '';
     const featuredClass = item.hot ? 'featured' : '';
+    const cover = safeHttpUrl(item.cover);
+    const fallback = escapeHtml(item.image || '📰');
+    const media = cover !== '#'
+        ? `<div class="news-image-wrap"><img class="news-image" src="${cover}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false;"><div class="news-image placeholder" hidden>${fallback}</div></div>`
+        : `<div class="news-image placeholder">${fallback}</div>`;
     
     return `
         <article class="news-item ${featuredClass}" data-id="${item.id}" tabindex="0" role="button" aria-label="${escapeHtml(item.title)}">
-            <div class="news-image placeholder">${escapeHtml(item.image || '📰')}</div>
+            ${media}
             <div class="news-content">
                 <div class="news-header">
                     <span class="news-category ${categoryClass}">${categoryMap[item.category]}</span>
@@ -405,7 +414,7 @@ function createNewsItem(item) {
                 <h2 class="news-title">${escapeHtml(item.title)}</h2>
                 <p class="news-summary">${escapeHtml(item.summary)}</p>
                 <div class="news-meta">
-                    <span class="news-source">${item.source}</span>
+                    <span class="news-source">${escapeHtml(item.source)}</span>
                     <span>${escapeHtml(relativeTime(item))}</span>
                 </div>
             </div>
@@ -675,3 +684,11 @@ window.AiNewsHub = {
     getNewsData,
     refreshData
 };
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register(new URL('sw.js', window.location.href)).catch(() => {
+            // 离线缓存失败不影响阅读
+        });
+    });
+}
