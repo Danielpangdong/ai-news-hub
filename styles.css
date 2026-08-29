@@ -831,7 +831,8 @@ img.news-image {
         gap: 12px;
     }
 
-    .news-image {
+    .news-image,
+    .news-image-wrap {
         width: 100%;
         height: 160px;
     }
