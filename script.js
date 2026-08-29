@@ -199,7 +199,7 @@ async function loadSourceStatus() {
         const status = await response.json();
         const sources = Array.isArray(status.sources) ? status.sources : [];
         const failed = Array.isArray(status.failedSources) ? status.failedSources : sources.filter((item) => !item.ok).map((item) => item.name);
-        const total = sources.length || 9;
+        const total = sources.length || 10;
         const okCount = total - failed.length;
         text.textContent = failed.length === 0
             ? `${okCount}/${total} 个源正常`

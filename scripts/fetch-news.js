@@ -72,6 +72,12 @@ const RSS_SOURCES = [
         url: 'https://huggingface.co/blog/feed.xml',
         category: 'tech',
         weight: 2
+    },
+    {
+        name: 'VentureBeat AI',
+        url: 'https://venturebeat.com/category/ai/feed/',
+        category: 'industry',
+        weight: 2
     }
 ];
 

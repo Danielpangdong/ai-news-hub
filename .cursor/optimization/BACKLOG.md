@@ -37,3 +37,4 @@
 - [x] p3-readme-live-url：README 换成真实 Pages 地址与优化闭环说明
 - [x] p3-topic-and-translation-quality：混杂源做主题过滤；低质量译文回退英文并展示原文副标题
 - [x] p3-source-health：抓取失败重试一次，并在侧栏展示源健康度
+- [x] p3-venturebeat-and-translation-lint：新增 VentureBeat AI；validate-news 拒绝「需翻译」残留

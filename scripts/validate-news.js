@@ -83,6 +83,10 @@ function main() {
             fail(`${prefix} date 必须为 YYYY-MM-DD`);
         }
 
+        if (/需翻译|MYMEMORY|¤BRAND_/.test(item.title) || /需翻译/.test(item.summary || '')) {
+            fail(`${prefix} 标题或摘要含翻译失败残留`);
+        }
+
         if (!Array.isArray(item.tags) || item.tags.some((tag) => typeof tag !== 'string' || tag.length === 0)) {
             fail(`${prefix} tags 必须是非空字符串数组`);
         }

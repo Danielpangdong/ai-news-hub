@@ -72,6 +72,7 @@ GitHub Actions 工作流 `Deploy and Update`：
 - Google AI Blog
 - Hugging Face Blog
 - Hacker News（Algolia）
+- VentureBeat AI
 
 修改源：编辑 `scripts/fetch-news.js` 中的 `RSS_SOURCES`。
 
