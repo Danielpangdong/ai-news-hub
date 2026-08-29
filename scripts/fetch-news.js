@@ -273,7 +273,10 @@ function isHighQualityTranslation(original, translated) {
     if (!translated || translated === original || !looksChinese(translated)) {
         return false;
     }
-    if (/¤|需翻译|MYMEMORY|获得\$|开放式人工智能|允许您/.test(translated)) {
+    if (/¤|需翻译|MYMEMORY|获得\$|开放式人工智能|允许您|法院规则|刮掉了|开放式ASR|人工智能舞台|这是它们之间/.test(translated)) {
+        return false;
+    }
+    if (/\s[，：]/.test(translated)) {
         return false;
     }
     return true;

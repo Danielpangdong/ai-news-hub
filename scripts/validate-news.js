@@ -85,8 +85,8 @@ function main() {
             fail(`${prefix} date 必须为 YYYY-MM-DD`);
         }
 
-        if (/需翻译|MYMEMORY|¤BRAND_/.test(item.title) || /需翻译/.test(item.summary || '')) {
-            fail(`${prefix} 标题或摘要含翻译失败残留`);
+        if (/需翻译|MYMEMORY|¤BRAND_|获得\$|开放式人工智能|法院规则|刮掉了/.test(item.title) || /需翻译/.test(item.summary || '')) {
+            fail(`${prefix} 标题或摘要含低质量译文或翻译失败残留`);
         }
 
         if (!Array.isArray(item.tags) || item.tags.some((tag) => typeof tag !== 'string' || tag.length === 0)) {

@@ -38,3 +38,5 @@
 - [x] p3-topic-and-translation-quality：混杂源做主题过滤；低质量译文回退英文并展示原文副标题
 - [x] p3-source-health：抓取失败重试一次，并在侧栏展示源健康度
 - [x] p3-venturebeat-and-translation-lint：新增 VentureBeat AI；validate-news 拒绝「需翻译」残留
+- [x] p3-status-published-counts：源健康按上线条数记账，CI 校验 status 与 news 一致
+- [x] p3-strict-title-quality：低质量中文标题回退英文，校验拒绝已知坏译模式
