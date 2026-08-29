@@ -428,7 +428,7 @@ function createNewsItem(item) {
     const cover = safeHttpUrl(item.cover);
     const fallback = escapeHtml(item.image || '📰');
     const media = cover !== '#'
-        ? `<div class="news-image-wrap"><img class="news-image" src="${cover}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false;"><div class="news-image placeholder" hidden>${fallback}</div></div>`
+        ? `<div class="news-image-wrap"><img class="news-image" src="${cover}" alt="" width="160" height="100" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false;"><div class="news-image placeholder" hidden>${fallback}</div></div>`
         : `<div class="news-image placeholder">${fallback}</div>`;
     
     return `

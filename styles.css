@@ -69,7 +69,7 @@ html {
 }
 
 body {
-    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
     background: var(--bg-secondary);
     color: var(--text-primary);
     line-height: 1.6;
@@ -271,6 +271,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    min-height: 640px;
 }
 
 .news-item {
