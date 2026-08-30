@@ -9,6 +9,8 @@
 let newsData = [];
 let currentCategory = 'all';
 let searchQuery = '';
+let loadError = '';
+let lastOpenedItemId = null;
 
 // 模拟新闻数据（实际项目中会从API或JSON文件加载）
 const defaultNews = [
@@ -156,10 +158,21 @@ const categoryStyles = {
 // ==========================================
 document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
+    applyCategoryFromHash();
     await initData();
     initEventListeners();
     renderAll();
 });
+
+function applyCategoryFromHash() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && categoryMap[hash]) {
+        currentCategory = hash;
+        document.querySelectorAll('.nav-link').forEach((link) => {
+            link.classList.toggle('active', link.dataset.category === hash);
+        });
+    }
+}
 
 // 初始化主题
 function initTheme() {
@@ -168,44 +181,99 @@ function initTheme() {
     updateThemeIcon(savedTheme);
 }
 
-// 初始化数据
-async function initData() {
-    // 优先从 data/news.json 加载数据
+function newsJsonUrl() {
+    return new URL('data/news.json', window.location.href).toString();
+}
+
+async function loadSourceStatus() {
+    const widget = document.getElementById('sourceStatusWidget');
+    const text = document.getElementById('sourceStatusText');
+    if (!widget || !text) {
+        return;
+    }
     try {
-        const response = await fetch('data/news.json');
-        if (response.ok) {
-            newsData = await response.json();
-            const updateTime = new Date().toLocaleString('zh-CN');
-            document.getElementById('updateTime').textContent = `更新于：${updateTime}`;
-            localStorage.setItem('aiNewsData', JSON.stringify(newsData));
-            localStorage.setItem('aiNewsTime', updateTime);
+        const response = await fetch(new URL('data/status.json', window.location.href).toString(), { cache: 'no-store' });
+        if (!response.ok) {
             return;
         }
-    } catch (e) {
-        console.log('从文件加载失败，使用缓存或默认数据');
+        const status = await response.json();
+        const sources = Array.isArray(status.sources) ? status.sources : [];
+        const failed = Array.isArray(status.failedSources) ? status.failedSources : sources.filter((item) => !item.ok).map((item) => item.name);
+        const total = sources.length || 10;
+        const okCount = total - failed.length;
+        const published = typeof status.itemCount === 'number' ? status.itemCount : '';
+        text.textContent = failed.length === 0
+            ? `${okCount}/${total} 个源可达，上线 ${published} 条`
+            : `${okCount}/${total} 个源可达，失败：${failed.join('、')}`;
+        widget.hidden = false;
+    } catch {
+        text.textContent = '源状态暂不可用';
     }
-    
-    // 如果文件加载失败，尝试从 localStorage 加载
+}
+
+function normalizeNewsList(payload) {
+    if (!Array.isArray(payload)) {
+        throw new Error('资讯数据格式无效');
+    }
+    return payload.filter((item) => item && typeof item.title === 'string' && typeof item.url === 'string');
+}
+
+function latestPublishedLabel(list) {
+    const timestamps = list
+        .map((item) => Date.parse(item.publishedAt || item.date || ''))
+        .filter((value) => !Number.isNaN(value));
+    if (timestamps.length === 0) {
+        return new Date().toLocaleString('zh-CN');
+    }
+    return new Date(Math.max(...timestamps)).toLocaleString('zh-CN');
+}
+
+function applyNewsData(list, sourceLabel) {
+    newsData = list;
+    loadError = '';
+    const updateTime = latestPublishedLabel(list);
+    document.getElementById('updateTime').textContent = `更新于：${updateTime}`;
+    localStorage.setItem('aiNewsData', JSON.stringify(newsData));
+    localStorage.setItem('aiNewsTime', updateTime);
+    localStorage.setItem('aiNewsSource', sourceLabel);
+}
+
+async function loadNewsFromFile() {
+    const response = await fetch(`${newsJsonUrl()}?t=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) {
+        throw new Error(`资讯文件加载失败（${response.status}）`);
+    }
+    return normalizeNewsList(await response.json());
+}
+
+// 初始化数据
+async function initData() {
+    try {
+        const list = await loadNewsFromFile();
+        applyNewsData(list, 'file');
+        await loadSourceStatus();
+        return;
+    } catch (error) {
+        console.warn('从文件加载失败，尝试本地缓存', error);
+    }
+
     const savedData = localStorage.getItem('aiNewsData');
     const savedTime = localStorage.getItem('aiNewsTime');
-    
+
     if (savedData) {
         try {
-            newsData = JSON.parse(savedData);
-        } catch (e) {
-            newsData = defaultNews;
+            newsData = normalizeNewsList(JSON.parse(savedData));
+            loadError = '正在显示本地缓存，最新源暂不可用';
+            document.getElementById('updateTime').textContent = `缓存于：${savedTime || '未知时间'}`;
+            return;
+        } catch (error) {
+            console.warn('缓存损坏', error);
         }
-    } else {
-        newsData = defaultNews;
-        saveData();
     }
-    
-    // 更新显示时间
-    if (savedTime) {
-        document.getElementById('updateTime').textContent = `更新于：${savedTime}`;
-    } else {
-        document.getElementById('updateTime').textContent = `更新于：${new Date().toLocaleString('zh-CN')}`;
-    }
+
+    newsData = defaultNews;
+    loadError = '未能加载线上资讯，当前为内置示例';
+    document.getElementById('updateTime').textContent = `更新于：${new Date().toLocaleString('zh-CN')}`;
 }
 
 // 保存数据到 localStorage
@@ -237,8 +305,16 @@ function initEventListeners() {
     
     // 搜索
     const searchInput = document.getElementById('searchInput');
+    const searchForm = document.getElementById('searchForm');
+    if (searchForm) {
+        searchForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            searchQuery = searchInput.value.trim().toLowerCase();
+            renderNewsList();
+        });
+    }
     searchInput.addEventListener('input', debounce((e) => {
-        searchQuery = e.target.value.toLowerCase();
+        searchQuery = e.target.value.trim().toLowerCase();
         renderNewsList();
     }, 300));
     
@@ -258,9 +334,29 @@ function initEventListeners() {
         });
     });
     
-    // ESC 关闭弹窗
+    // ESC 关闭弹窗，Tab 限制在弹窗内
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+        const modal = document.getElementById('detailModal');
+        if (e.key === 'Escape') {
+            closeModal();
+            return;
+        }
+        if (e.key !== 'Tab' || !modal.classList.contains('active')) {
+            return;
+        }
+        const focusable = [...modal.querySelectorAll('button, a[href]')].filter((el) => el.offsetParent !== null);
+        if (focusable.length === 0) {
+            return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
     });
 }
 
@@ -276,6 +372,18 @@ function renderAll() {
 function renderNewsList() {
     const container = document.getElementById('newsList');
     const emptyState = document.getElementById('emptyState');
+    const errorState = document.getElementById('errorState');
+    const emptyStateText = document.getElementById('emptyStateText');
+    const errorStateText = document.getElementById('errorStateText');
+
+    if (errorState && errorStateText) {
+        if (loadError) {
+            errorState.style.display = 'block';
+            errorStateText.textContent = loadError;
+        } else {
+            errorState.style.display = 'none';
+        }
+    }
     
     // 过滤数据
     let filteredData = newsData;
@@ -285,32 +393,57 @@ function renderNewsList() {
     }
     
     if (searchQuery) {
-        filteredData = filteredData.filter(item => 
-            item.title.toLowerCase().includes(searchQuery) ||
-            item.summary.toLowerCase().includes(searchQuery) ||
-            item.tags.some(tag => tag.toLowerCase().includes(searchQuery))
-        );
+        filteredData = filteredData.filter(item => {
+            const tags = Array.isArray(item.tags) ? item.tags : [];
+            return (
+                (item.title || '').toLowerCase().includes(searchQuery) ||
+                (item.titleEn || '').toLowerCase().includes(searchQuery) ||
+                (item.summary || '').toLowerCase().includes(searchQuery) ||
+                (item.summaryEn || '').toLowerCase().includes(searchQuery) ||
+                tags.some(tag => String(tag).toLowerCase().includes(searchQuery))
+            );
+        });
     }
     
     // 按热度排序，再按时间
     filteredData.sort((a, b) => {
         if (a.hot !== b.hot) return b.hot ? 1 : -1;
-        return b.id - a.id;
+        const timeA = Date.parse(a.publishedAt || a.date || '') || 0;
+        const timeB = Date.parse(b.publishedAt || b.date || '') || 0;
+        return timeB - timeA;
     });
     
     // 渲染
     if (filteredData.length === 0) {
         container.innerHTML = '';
         emptyState.style.display = 'block';
+        if (emptyStateText) {
+            emptyStateText.textContent = searchQuery ? '没有匹配的资讯' : '暂无该分类资讯';
+        }
+        const emptyCount = document.getElementById('resultCount');
+        if (emptyCount) {
+            emptyCount.textContent = '共 0 条';
+        }
         return;
     }
     
     emptyState.style.display = 'none';
+    const resultCount = document.getElementById('resultCount');
+    if (resultCount) {
+        resultCount.textContent = `共 ${filteredData.length} 条`;
+    }
     container.innerHTML = filteredData.map(item => createNewsItem(item)).join('');
     
     // 绑定点击事件
     document.querySelectorAll('.news-item').forEach((item, index) => {
-        item.addEventListener('click', () => showDetail(filteredData[index]));
+        const open = () => showDetail(filteredData[index]);
+        item.addEventListener('click', open);
+        item.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                open();
+            }
+        });
     });
 }
 
@@ -319,20 +452,26 @@ function createNewsItem(item) {
     const categoryClass = categoryStyles[item.category] || '';
     const hotBadge = item.hot ? '<span class="news-hot">热门</span>' : '';
     const featuredClass = item.hot ? 'featured' : '';
+    const cover = safeHttpUrl(item.cover);
+    const fallback = escapeHtml(item.image || '📰');
+    const media = cover !== '#'
+        ? `<div class="news-image-wrap"><img class="news-image" src="${cover}" alt="" width="160" height="100" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false;"><div class="news-image placeholder" hidden>${fallback}</div></div>`
+        : `<div class="news-image placeholder">${fallback}</div>`;
     
     return `
-        <article class="news-item ${featuredClass}" data-id="${item.id}">
-            <div class="news-image placeholder">${item.image}</div>
+        <article class="news-item ${featuredClass}" data-id="${item.id}" tabindex="0" role="button" aria-label="${escapeHtml(item.title)}">
+            ${media}
             <div class="news-content">
                 <div class="news-header">
                     <span class="news-category ${categoryClass}">${categoryMap[item.category]}</span>
                     ${hotBadge}
                 </div>
                 <h2 class="news-title">${escapeHtml(item.title)}</h2>
+                <p class="news-title-en">${escapeHtml(item.titleEn && item.titleEn !== item.title ? item.titleEn : '\u00a0')}</p>
                 <p class="news-summary">${escapeHtml(item.summary)}</p>
                 <div class="news-meta">
-                    <span class="news-source">${item.source}</span>
-                    <span>${item.time}</span>
+                    <span class="news-source">${escapeHtml(item.source)}</span>
+                    <span>${escapeHtml(relativeTime(item))}</span>
                 </div>
             </div>
         </article>
@@ -346,7 +485,8 @@ function renderTagCloud() {
     // 统计所有标签
     const tagCount = {};
     newsData.forEach(item => {
-        item.tags.forEach(tag => {
+        const tags = Array.isArray(item.tags) ? item.tags : [];
+        tags.forEach(tag => {
             tagCount[tag] = (tagCount[tag] || 0) + 1;
         });
     });
@@ -398,15 +538,23 @@ function toggleTheme() {
 function updateThemeIcon(theme) {
     const icon = document.querySelector('.theme-icon');
     icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    const themeColor = document.getElementById('themeColorMeta');
+    if (themeColor) {
+        themeColor.setAttribute('content', theme === 'dark' ? '#1a1a1a' : '#e74c3c');
+    }
 }
 
 function setCategory(category) {
     currentCategory = category;
+    if (categoryMap[category]) {
+        window.history.replaceState(null, '', `#${category}`);
+    }
     renderNewsList();
 }
 
 function showDetail(item) {
     currentModalItem = item;
+    lastOpenedItemId = item.id;
     currentModalLang = 'zh';
     
     const modal = document.getElementById('detailModal');
@@ -427,6 +575,10 @@ function showDetail(item) {
     
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    const closeBtn = document.getElementById('modalClose');
+    if (closeBtn) {
+        closeBtn.focus();
+    }
 }
 
 function renderModalContent() {
@@ -437,7 +589,9 @@ function renderModalContent() {
     // 根据当前语言选择内容
     const isZh = currentModalLang === 'zh';
     const title = isZh ? item.title : (item.titleEn || item.title);
-    const content = isZh ? item.content : (item.summaryEn || item.summary);
+    const content = isZh
+        ? (item.content || item.summary || '')
+        : (item.summaryEn || item.content || item.summary || '');
     
     // 将内容中的换行转换为段落
     const contentHtml = content
@@ -451,18 +605,18 @@ function renderModalContent() {
     body.innerHTML = `
         <div class="modal-header">
             <span class="modal-category ${categoryClass}">${categoryMap[item.category]}</span>
-            <h1 class="modal-title">${escapeHtml(title)}</h1>
+            <h1 class="modal-title" id="modalTitle">${escapeHtml(title)}</h1>
             <div class="modal-meta">
-                <span>来源：${item.source}</span>
-                <span>${item.date}</span>
-                <span>${item.time}</span>
+                <span>来源：${escapeHtml(item.source)}</span>
+                <span>${escapeHtml(item.date || '')}</span>
+                <span>${escapeHtml(relativeTime(item))}</span>
             </div>
         </div>
         <div class="modal-content-text">
             ${langTip}
             ${contentHtml}
         </div>
-        <a href="${item.url}" class="modal-link" target="_blank" rel="noopener">
+        <a href="${safeHttpUrl(item.url)}" class="modal-link" target="_blank" rel="noopener noreferrer">
             阅读原文
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -478,88 +632,55 @@ function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
     currentModalItem = null;
+    if (lastOpenedItemId != null) {
+        const trigger = document.querySelector(`.news-item[data-id="${lastOpenedItemId}"]`);
+        if (trigger) {
+            trigger.focus();
+        }
+    }
 }
 
-function refreshData() {
+async function refreshData() {
     const btn = document.getElementById('refreshBtn');
     const loadingState = document.getElementById('loadingState');
     const newsList = document.getElementById('newsList');
-    
-    // 旋转动画
+
+    btn.disabled = true;
     btn.style.transform = 'rotate(360deg)';
     btn.style.transition = 'transform 0.6s ease';
-    
-    // 显示加载状态
     newsList.style.display = 'none';
     loadingState.style.display = 'block';
-    
-    // 模拟异步加载（实际项目中这里会请求API或fetch JSON文件）
-    setTimeout(() => {
-        // 这里可以添加实际的数据获取逻辑
-        // 比如：fetch('data/news.json').then(...)
-        
-        // 模拟获取到一些新数据
-        const newNews = generateMockNews();
-        newsData = [...newNews, ...newsData].slice(0, 20); // 保留最新20条
-        
-        saveData();
-        
-        document.getElementById('updateTime').textContent = `更新于：${new Date().toLocaleString('zh-CN')}`;
-        
+
+    try {
+        const list = await loadNewsFromFile();
+        applyNewsData(list, 'file');
+    } catch (error) {
+        loadError = error.message || '刷新失败，请稍后重试';
+    } finally {
         loadingState.style.display = 'none';
         newsList.style.display = 'flex';
         renderAll();
-        
-        // 恢复按钮
-        setTimeout(() => {
+        btn.disabled = false;
+        window.setTimeout(() => {
             btn.style.transform = '';
             btn.style.transition = '';
         }, 300);
-    }, 1500);
+    }
 }
 
-// 生成模拟新闻（实际项目中会替换为真实数据）
-function generateMockNews() {
-    const templates = [
-        {
-            title: "Stability AI 发布 Stable Diffusion 4：生成速度提升 3 倍",
-            category: "product",
-            source: "TechCrunch",
-            image: "🖼️",
-            tags: ["Stability AI", "图像生成", "开源"]
-        },
-        {
-            title: "微软 Copilot 月活用户突破 2 亿，企业版增长迅猛",
-            category: "industry",
-            source: "The Verge",
-            image: "📈",
-            tags: ["微软", "Copilot", "生产力工具"]
-        },
-        {
-            title: "研究表明：AI 编程助手可将开发效率提升 55%",
-            category: "tech",
-            source: "MIT Tech Review",
-            image: "💻",
-            tags: ["AI编程", "效率研究", "开发者工具"]
-        }
-    ];
-    
-    const now = new Date();
-    return templates.map((template, index) => ({
-        id: Date.now() + index,
-        title: template.title,
-        summary: `这是关于${template.title}的摘要描述，在实际项目中这里会显示真实的摘要内容...`,
-        category: template.category,
-        source: template.source,
-        sourceUrl: "#",
-        url: "#",
-        image: template.image,
-        date: now.toISOString().split('T')[0],
-        time: "刚刚",
-        hot: Math.random() > 0.7,
-        tags: template.tags,
-        content: `${template.title}的详细内容...在实际项目中这里会显示完整的文章内容。`
-    }));
+function relativeTime(item) {
+    const timestamp = Date.parse(item.publishedAt || item.date || '');
+    if (Number.isNaN(timestamp)) {
+        return item.time || '';
+    }
+    const diffHours = (Date.now() - timestamp) / (1000 * 60 * 60);
+    if (diffHours < 1) {
+        return '刚刚';
+    }
+    if (diffHours < 24) {
+        return `${Math.floor(diffHours)}小时前`;
+    }
+    return `${Math.floor(diffHours / 24)}天前`;
 }
 
 // ==========================================
@@ -567,8 +688,20 @@ function generateMockNews() {
 // ==========================================
 function escapeHtml(text) {
     const div = document.createElement('div');
-    div.textContent = text;
+    div.textContent = text == null ? '' : String(text);
     return div.innerHTML;
+}
+
+function safeHttpUrl(value) {
+    try {
+        const url = new URL(value, window.location.href);
+        if (url.protocol === 'http:' || url.protocol === 'https:') {
+            return url.toString();
+        }
+    } catch {
+        return '#';
+    }
+    return '#';
 }
 
 function debounce(func, wait) {
@@ -615,3 +748,11 @@ window.AiNewsHub = {
     getNewsData,
     refreshData
 };
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register(new URL('sw.js', window.location.href)).catch(() => {
+            // 离线缓存失败不影响阅读
+        });
+    });
+}

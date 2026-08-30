@@ -48,12 +48,41 @@ html {
     scroll-behavior: smooth;
 }
 
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: -40px;
+    z-index: 400;
+    padding: 8px 12px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 body {
-    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
     background: var(--bg-secondary);
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 a {
@@ -97,6 +126,13 @@ a {
 .logo-icon {
     font-size: 28px;
     line-height: 1;
+}
+
+.logo-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .logo-text {
@@ -217,7 +253,15 @@ a {
     border-radius: 2px;
 }
 
-.update-time {
+.section-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.update-time,
+.result-count {
     font-size: 13px;
     color: var(--text-tertiary);
 }
@@ -227,6 +271,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    min-height: 960px;
 }
 
 .news-item {
@@ -237,6 +282,8 @@ a {
     transition: var(--transition);
     cursor: pointer;
     border: 1px solid transparent;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 168px;
 }
 
 .news-item:hover {
@@ -268,6 +315,22 @@ a {
     background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
 }
 
+.news-image-wrap {
+    width: 160px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.news-image-wrap .news-image {
+    width: 100%;
+    height: 100%;
+}
+
+img.news-image {
+    object-fit: cover;
+    background: var(--bg-tertiary);
+}
+
 .news-content {
     flex: 1;
     display: flex;
@@ -297,6 +360,11 @@ a {
 .news-category.tech { background: #e8f5e9; color: #388e3c; }
 .news-category.opinion { background: #fff3e0; color: #f57c00; }
 
+[data-theme="dark"] .news-category.industry { background: #16324d; color: #90caf9; }
+[data-theme="dark"] .news-category.product { background: #3a1d47; color: #ce93d8; }
+[data-theme="dark"] .news-category.tech { background: #1b3a24; color: #a5d6a7; }
+[data-theme="dark"] .news-category.opinion { background: #4a3016; color: #ffcc80; }
+
 .news-hot {
     font-size: 11px;
     padding: 2px 6px;
@@ -316,6 +384,23 @@ a {
     -webkit-box-orient: vertical;
     overflow: hidden;
     transition: var(--transition);
+}
+
+.news-title-en {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.4;
+    min-height: 1.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.source-status {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 .news-item:hover .news-title {
@@ -554,9 +639,15 @@ a {
     display: block;
 }
 
-.empty-state p {
+.empty-state p,
+.error-state p {
     color: var(--text-tertiary);
     font-size: 14px;
+}
+
+.error-state {
+    text-align: center;
+    padding: 24px 20px 8px;
 }
 
 /* ==========================================
@@ -750,6 +841,20 @@ a {
         justify-content: flex-start;
         overflow-x: auto;
         padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .logo-text {
+        font-size: 18px;
     }
 
     .nav-link {
@@ -763,7 +868,8 @@ a {
         gap: 12px;
     }
 
-    .news-image {
+    .news-image,
+    .news-image-wrap {
         width: 100%;
         height: 160px;
     }

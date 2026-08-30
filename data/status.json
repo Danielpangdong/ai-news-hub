@@ -1,0 +1,67 @@
+{
+  "fetchedAt": "2026-08-30T08:01:12.061Z",
+  "itemCount": 28,
+  "failedSources": [],
+  "sources": [
+    {
+      "name": "TechCrunch AI",
+      "ok": true,
+      "fetched": 6,
+      "published": 6
+    },
+    {
+      "name": "The Verge",
+      "ok": true,
+      "fetched": 6,
+      "published": 4
+    },
+    {
+      "name": "MIT Technology Review",
+      "ok": true,
+      "fetched": 6,
+      "published": 2
+    },
+    {
+      "name": "Wired",
+      "ok": true,
+      "fetched": 6,
+      "published": 4
+    },
+    {
+      "name": "Ars Technica",
+      "ok": true,
+      "fetched": 4,
+      "published": 2
+    },
+    {
+      "name": "OpenAI",
+      "ok": true,
+      "fetched": 6,
+      "published": 2
+    },
+    {
+      "name": "Google AI",
+      "ok": true,
+      "fetched": 1,
+      "published": 1
+    },
+    {
+      "name": "Hugging Face",
+      "ok": true,
+      "fetched": 5,
+      "published": 2
+    },
+    {
+      "name": "VentureBeat AI",
+      "ok": true,
+      "fetched": 3,
+      "published": 2
+    },
+    {
+      "name": "Hacker News",
+      "ok": true,
+      "fetched": 7,
+      "published": 3
+    }
+  ]
+}

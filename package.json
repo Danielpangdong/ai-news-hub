@@ -1,0 +1,14 @@
+{
+  "name": "ai-news-hub",
+  "private": true,
+  "description": "AI 深观察 — 全球 AI 资讯聚合站",
+  "scripts": {
+    "fetch": "node scripts/fetch-news.js",
+    "validate": "node scripts/validate-news.js",
+    "update": "bash scripts/update.sh",
+    "serve": "python3 -m http.server 8000 --bind 0.0.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
