@@ -1,5 +1,174 @@
 [
   {
+    "id": 1542628477,
+    "title": "Meta Project OT计划用AI代理取代员工",
+    "titleEn": "Meta Project OT plan to replace employees with AI agents",
+    "summary": "Meta Project OT plan to replace employees with AI agents",
+    "summaryEn": "Meta Project OT plan to replace employees with AI agents",
+    "category": "opinion",
+    "source": "Hacker News",
+    "sourceUrl": "https://www.thestreet.com/technology/mark-zuckerberg-shocking-message-meta-employee-layoffs-artificial-intelligence",
+    "url": "https://www.thestreet.com/technology/mark-zuckerberg-shocking-message-meta-employee-layoffs-artificial-intelligence",
+    "image": "📰",
+    "cover": "",
+    "date": "2026-08-30",
+    "publishedAt": "2026-08-30T02:01:08.000Z",
+    "time": "5小时前",
+    "hot": true,
+    "tags": [
+      "Meta"
+    ],
+    "content": "Meta Project OT plan to replace employees with AI agents"
+  },
+  {
+    "id": 1789238321,
+    "title": "Anthropic was illegally blacklisted by the Trump administration, court rules",
+    "titleEn": "Anthropic was illegally blacklisted by the Trump administration, court rules",
+    "summary": "Anthropic was illegally blacklisted by the Trump administration, court rules",
+    "summaryEn": "Anthropic was illegally blacklisted by the Trump administration, court rules",
+    "category": "opinion",
+    "source": "Hacker News",
+    "sourceUrl": "https://www.theverge.com/ai-artificial-intelligence/985947/anthropic-supply-chain-risk-lawsuit-judge-ruling",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/985947/anthropic-supply-chain-risk-lawsuit-judge-ruling",
+    "image": "📰",
+    "cover": "",
+    "date": "2026-08-30",
+    "publishedAt": "2026-08-30T01:07:10.000Z",
+    "time": "6小时前",
+    "hot": true,
+    "tags": [
+      "Anthropic"
+    ],
+    "content": "Anthropic was illegally blacklisted by the Trump administration, court rules"
+  },
+  {
+    "id": 1748280304,
+    "title": "Sony Music, Warner sue Anthropic, alleging a “brazen campaign” of intellectual property theft",
+    "titleEn": "Sony Music, Warner sue Anthropic, alleging a “brazen campaign” of intellectual property theft",
+    "summary": "This latest lawsuit is particularly broad and homes in on accusations of illegal piracy.",
+    "summaryEn": "This latest lawsuit is particularly broad and homes in on accusations of illegal piracy.",
+    "category": "industry",
+    "source": "TechCrunch AI",
+    "sourceUrl": "https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/",
+    "url": "https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/",
+    "image": "📰",
+    "cover": "",
+    "date": "2026-08-29",
+    "publishedAt": "2026-08-29T18:41:59.000Z",
+    "time": "13小时前",
+    "hot": true,
+    "tags": [
+      "Anthropic",
+      "AI监管"
+    ],
+    "content": "This latest lawsuit is particularly broad and homes in on accusations of illegal piracy."
+  },
+  {
+    "id": 1628721793,
+    "title": "Sony Music and Warner Chappell are suing Anthropic",
+    "titleEn": "Sony Music and Warner Chappell are suing Anthropic",
+    "summary": "Sony Music and Warner Chappell have filed suit against Anthropic in the US District Court for the Northern District of California seeking damages for \"tens of thousands\" copyrighted works. The companies are asking for up to $150,000 per work, plus up to $25,000 for each instance when identifiable copyright data was stripped. In total, the […]",
+    "summaryEn": "Sony Music and Warner Chappell have filed suit against Anthropic in the US District Court for the Northern District of California seeking damages for \"tens of thousands\" copyrighted works. The companies are asking for up to $150,000 per work, plus up to $25,000 for each instance when identifiable copyright data was stripped. In total, the […]",
+    "category": "industry",
+    "source": "The Verge",
+    "sourceUrl": "https://www.theverge.com/ai-artificial-intelligence/986438/sony-music-warner-chappell-anthropic-lawsuit-copyright",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/986438/sony-music-warner-chappell-anthropic-lawsuit-copyright",
+    "image": "📰",
+    "cover": "",
+    "date": "2026-08-29",
+    "publishedAt": "2026-08-29T18:20:15.000Z",
+    "time": "13小时前",
+    "hot": true,
+    "tags": [
+      "Anthropic"
+    ],
+    "content": "Sony Music and Warner Chappell have filed suit against Anthropic in the US District Court for the Northern District of California seeking damages for \"tens of thousands\" copyrighted works. The companies are asking for up to $150,000 per work, plus up to $25,000 for each instance when identifiable copyright data was stripped. In total, the […]"
+  },
+  {
+    "id": 649098327,
+    "title": "“We’re not doing 30 bets a year”: Vijay Pande on betting small after running $4 billion at a16z",
+    "titleEn": "“We’re not doing 30 bets a year”: Vijay Pande on betting small after running $4 billion at a16z",
+    "summary": "Vijay Pande — who left a16z's roughly $4 billion biotech practice last year to start the much smaller, AI-native VZVC — talks about why biology is finally shifting from a \"discovery\" science to an \"engineering\" one, why clinical trials are still brutally expensive, and why he thinks open, shared datasets (not walled-off ones) are what will actually let AI transform medicine.",
+    "summaryEn": "Vijay Pande — who left a16z's roughly $4 billion biotech practice last year to start the much smaller, AI-native VZVC — talks about why biology is finally shifting from a \"discovery\" science to an \"engineering\" one, why clinical trials are still brutally expensive, and why he thinks open, shared datasets (not walled-off ones) are what will actually let AI transform medicine.",
+    "category": "opinion",
+    "source": "TechCrunch AI",
+    "sourceUrl": "https://techcrunch.com/2026/08/29/were-not-doing-30-bets-a-year-vijay-pande-on-betting-small-after-running-4-billion-at-a16z/",
+    "url": "https://techcrunch.com/2026/08/29/were-not-doing-30-bets-a-year-vijay-pande-on-betting-small-after-running-4-billion-at-a16z/",
+    "image": "📰",
+    "cover": "",
+    "date": "2026-08-29",
+    "publishedAt": "2026-08-29T17:36:47.000Z",
+    "time": "14小时前",
+    "hot": false,
+    "tags": [
+      "AI监管"
+    ],
+    "content": "Vijay Pande — who left a16z's roughly $4 billion biotech practice last year to start the much smaller, AI-native VZVC — talks about why biology is finally shifting from a \"discovery\" science to an \"engineering\" one, why clinical trials are still brutally expensive, and why he thinks open, shared datasets (not walled-off ones) are what will actually let AI transform medicine."
+  },
+  {
+    "id": 1015024947,
+    "title": "Nvidia’s AI advantage is moving beyond the GPU",
+    "titleEn": "Nvidia’s AI advantage is moving beyond the GPU",
+    "summary": "The new generation of data center systems is increasing efficiency with smarter traffic control instead of just more processor cycles.",
+    "summaryEn": "The new generation of data center systems is increasing efficiency with smarter traffic control instead of just more processor cycles.",
+    "category": "industry",
+    "source": "TechCrunch AI",
+    "sourceUrl": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/",
+    "url": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/",
+    "image": "⚡",
+    "cover": "",
+    "date": "2026-08-29",
+    "publishedAt": "2026-08-29T13:00:00.000Z",
+    "time": "19小时前",
+    "hot": false,
+    "tags": [
+      "NVIDIA"
+    ],
+    "content": "The new generation of data center systems is increasing efficiency with smarter traffic control instead of just more processor cycles."
+  },
+  {
+    "id": 138238466,
+    "title": "人工智能巨头警告称，网络安全启示将在“几个月内”到来",
+    "titleEn": "The Cybersecurity Apocalypse Is Coming in ‘Months,’ AI Giants Warn",
+    "summary": "Plus: Hackers target over 100 US water systems, ICE puts in an order for robot dogs, and you’ll never guess what “MrChildPorn” was arrested for.",
+    "summaryEn": "Plus: Hackers target over 100 US water systems, ICE puts in an order for robot dogs, and you’ll never guess what “MrChildPorn” was arrested for.",
+    "category": "tech",
+    "source": "Wired",
+    "sourceUrl": "https://www.wired.com/story/security-news-this-week-the-cybersecurity-apocalypse-is-coming-in-months-ai-giants-warn/",
+    "url": "https://www.wired.com/story/security-news-this-week-the-cybersecurity-apocalypse-is-coming-in-months-ai-giants-warn/",
+    "image": "🔒",
+    "cover": "https://media.wired.com/photos/6a921e363b3f20c2f80986f3/master/pass/Security-News-This-Week-The-AI-Cybersecurity-Apocalypse-Is-Coming.jpg",
+    "date": "2026-08-29",
+    "publishedAt": "2026-08-29T10:30:00.000Z",
+    "time": "21小时前",
+    "hot": false,
+    "tags": [
+      "机器人"
+    ],
+    "content": "Plus: Hackers target over 100 US water systems, ICE puts in an order for robot dogs, and you’ll never guess what “MrChildPorn” was arrested for."
+  },
+  {
+    "id": 2088679563,
+    "title": "如何在自己的电脑上运行聊天机器人",
+    "titleEn": "How to Run a Chatbot on Your Own Computer",
+    "summary": "Installing a large language model on your personal computer gives you a handy digital assistant that won’t compromise your data privacy.",
+    "summaryEn": "Installing a large language model on your personal computer gives you a handy digital assistant that won’t compromise your data privacy.",
+    "category": "opinion",
+    "source": "Wired",
+    "sourceUrl": "https://www.wired.com/story/how-to-run-your-own-local-llm/",
+    "url": "https://www.wired.com/story/how-to-run-your-own-local-llm/",
+    "image": "📰",
+    "cover": "https://media.wired.com/photos/6a915ae02fa9a47ca7d480c1/master/pass/RunAChatbot.jpg",
+    "date": "2026-08-29",
+    "publishedAt": "2026-08-29T10:00:00.000Z",
+    "time": "22小时前",
+    "hot": false,
+    "tags": [
+      "大模型"
+    ],
+    "content": "Installing a large language model on your personal computer gives you a handy digital assistant that won’t compromise your data privacy."
+  },
+  {
     "id": 441077503,
     "title": "美国国家安全局希望获得“所有”人工智能模型，高级官员说",
     "titleEn": "NSA wants access to 'all' AI models, top official says",
@@ -13,7 +182,7 @@
     "cover": "",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T20:33:09.000Z",
-    "time": "4小时前",
+    "time": "1天前",
     "hot": false,
     "tags": [
       "AI资讯"
@@ -34,8 +203,8 @@
     "cover": "",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T20:24:11.000Z",
-    "time": "4小时前",
-    "hot": true,
+    "time": "1天前",
+    "hot": false,
     "tags": [
       "Microsoft",
       "NVIDIA",
@@ -57,12 +226,33 @@
     "cover": "",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T19:30:38.000Z",
-    "time": "5小时前",
-    "hot": true,
+    "time": "1天前",
+    "hot": false,
     "tags": [
       "Anthropic"
     ],
     "content": "Given 10 benchmarks for specific misaligned behaviors, the automated systems were able to improve performance on every single one without degrading overall performance."
+  },
+  {
+    "id": 1091802986,
+    "title": "音乐家出身的侦探正在寻找人工智能骗子",
+    "titleEn": "Musicians-turned-detectives are hunting for AI grifters",
+    "summary": "As audio-focused generative tools and platforms have gotten more sophisticated, the internet has become increasingly filled with AI-generated music whose melodies and vocals are algorithmically derived from the work of human artists. While some of the people pumping out this kind of content immediately own up to using AI, others have denied using the technology […]",
+    "summaryEn": "As audio-focused generative tools and platforms have gotten more sophisticated, the internet has become increasingly filled with AI-generated music whose melodies and vocals are algorithmically derived from the work of human artists. While some of the people pumping out this kind of content immediately own up to using AI, others have denied using the technology […]",
+    "category": "tech",
+    "source": "The Verge",
+    "sourceUrl": "https://www.theverge.com/entertainment/985866/h4rris-nihil-young-edm-suno-ai",
+    "url": "https://www.theverge.com/entertainment/985866/h4rris-nihil-young-edm-suno-ai",
+    "image": "📰",
+    "cover": "",
+    "date": "2026-08-28",
+    "publishedAt": "2026-08-28T19:10:32.000Z",
+    "time": "1天前",
+    "hot": false,
+    "tags": [
+      "AI资讯"
+    ],
+    "content": "As audio-focused generative tools and platforms have gotten more sophisticated, the internet has become increasingly filled with AI-generated music whose melodies and vocals are algorithmically derived from the work of human artists. While some of the people pumping out this kind of content immediately own up to using AI, others have denied using the technology […]"
   },
   {
     "id": 790036279,
@@ -78,7 +268,7 @@
     "cover": "",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T18:19:40.000Z",
-    "time": "6小时前",
+    "time": "1天前",
     "hot": false,
     "tags": [
       "AI资讯"
@@ -99,7 +289,7 @@
     "cover": "",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T16:28:40.000Z",
-    "time": "8小时前",
+    "time": "1天前",
     "hot": false,
     "tags": [
       "AI资讯"
@@ -120,7 +310,7 @@
     "cover": "https://media.wired.com/photos/6a909d466b1fcc4b68700cd4/master/pass/Backchannel-AI-Doctors-Business-1267508918.jpg",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T15:00:00.000Z",
-    "time": "9小时前",
+    "time": "1天前",
     "hot": false,
     "tags": [
       "AI资讯"
@@ -141,121 +331,13 @@
     "cover": "",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T14:11:14.000Z",
-    "time": "10小时前",
-    "hot": true,
+    "time": "1天前",
+    "hot": false,
     "tags": [
       "Google",
       "AI监管"
     ],
     "content": "Google's AI note-taking app, Gemini Notebook, can now pull information from the books you've purchased. The new \"Expert Intelligence\" feature allows you to bring titles from Google Play Books directly into Gemini Notebook, which means you can ask questions about the material, as well as generate plans, infographics, AI podcasts, and more based on their […]"
-  },
-  {
-    "id": 378874081,
-    "title": "Anthropic首次赢得五角大楼供应链风险标签的法庭胜利",
-    "titleEn": "Anthropic gets its first court win over the Pentagon’s supply-chain risk label",
-    "summary": "A federal judge ruled the Trump administration illegally labeled Anthropic a supply-chain risk, handing the AI company a victory as its second Pentagon lawsuit continues in Washington.",
-    "summaryEn": "A federal judge ruled the Trump administration illegally labeled Anthropic a supply-chain risk, handing the AI company a victory as its second Pentagon lawsuit continues in Washington.",
-    "category": "industry",
-    "source": "TechCrunch AI",
-    "sourceUrl": "https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/",
-    "url": "https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/",
-    "image": "📰",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T12:46:12.000Z",
-    "time": "12小时前",
-    "hot": true,
-    "tags": [
-      "Anthropic",
-      "AI监管"
-    ],
-    "content": "A federal judge ruled the Trump administration illegally labeled Anthropic a supply-chain risk, handing the AI company a victory as its second Pentagon lawsuit continues in Washington."
-  },
-  {
-    "id": 1488768243,
-    "title": "Hot Chips 2026: Cerebras lays out the future of wafer-scale AI",
-    "titleEn": "Hot Chips 2026: Cerebras lays out the future of wafer-scale AI",
-    "summary": "Hot Chips 2026: Cerebras lays out the future of wafer-scale AI",
-    "summaryEn": "Hot Chips 2026: Cerebras lays out the future of wafer-scale AI",
-    "category": "opinion",
-    "source": "Hacker News",
-    "sourceUrl": "https://www.tomshardware.com/tech-industry/artificial-intelligence/hot-chips-2026-cerebras-lays-out-the-future-of-wafer-scale-ai-nexus-system-architecture-triples-rack-scale-performance-cs-6-wafer-to-incorporate-stacked-dram",
-    "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/hot-chips-2026-cerebras-lays-out-the-future-of-wafer-scale-ai-nexus-system-architecture-triples-rack-scale-performance-cs-6-wafer-to-incorporate-stacked-dram",
-    "image": "⚡",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T12:44:23.000Z",
-    "time": "12小时前",
-    "hot": false,
-    "tags": [
-      "AI芯片"
-    ],
-    "content": "Hot Chips 2026: Cerebras lays out the future of wafer-scale AI"
-  },
-  {
-    "id": 946548067,
-    "title": "Meta executive leaves for OpenAI as the social media giant faces growing scrutiny in India",
-    "titleEn": "Meta executive leaves for OpenAI as the social media giant faces growing scrutiny in India",
-    "summary": "Sandhya Devanathan will oversee some OpenAI operations across Southeast Asia and Australia in her new role.",
-    "summaryEn": "Sandhya Devanathan will oversee some OpenAI operations across Southeast Asia and Australia in her new role.",
-    "category": "industry",
-    "source": "TechCrunch AI",
-    "sourceUrl": "https://techcrunch.com/2026/08/28/meta-executive-leaves-for-openai-as-the-social-media-giant-faces-growing-scrutiny-in-india/",
-    "url": "https://techcrunch.com/2026/08/28/meta-executive-leaves-for-openai-as-the-social-media-giant-faces-growing-scrutiny-in-india/",
-    "image": "🧠",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T12:21:06.000Z",
-    "time": "12小时前",
-    "hot": true,
-    "tags": [
-      "OpenAI",
-      "Meta"
-    ],
-    "content": "Sandhya Devanathan will oversee some OpenAI operations across Southeast Asia and Australia in her new role."
-  },
-  {
-    "id": 808395945,
-    "title": "TIME100人工智能最具影响力人物名单",
-    "titleEn": "TIME100 List of the Most Influential People in AI",
-    "summary": "TIME100 List of the Most Influential People in AI",
-    "summaryEn": "TIME100 List of the Most Influential People in AI",
-    "category": "opinion",
-    "source": "Hacker News",
-    "sourceUrl": "https://time.com/article/2026/08/26/time-reveals-the-2026-time100-ai-list-of-the-world-s-most-influential-people-in-artificial-intelligence/",
-    "url": "https://time.com/article/2026/08/26/time-reveals-the-2026-time100-ai-list-of-the-world-s-most-influential-people-in-artificial-intelligence/",
-    "image": "📰",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T12:07:26.000Z",
-    "time": "12小时前",
-    "hot": false,
-    "tags": [
-      "AI资讯"
-    ],
-    "content": "TIME100 List of the Most Influential People in AI"
-  },
-  {
-    "id": 1789238321,
-    "title": "Anthropic was illegally blacklisted by the Trump administration, court rules",
-    "titleEn": "Anthropic was illegally blacklisted by the Trump administration, court rules",
-    "summary": "On Thursday, a judge ruled that the Pentagon's blacklisting of Anthropic earlier this year was unconstitutional, delivering the AI lab a win in a monthslong rollercoaster of a battle with the Trump administration. The lawsuit, filed in March in a California district court, accused the Trump administration of unlawfully retaliating against Anthropic for setting \"red […]",
-    "summaryEn": "On Thursday, a judge ruled that the Pentagon's blacklisting of Anthropic earlier this year was unconstitutional, delivering the AI lab a win in a monthslong rollercoaster of a battle with the Trump administration. The lawsuit, filed in March in a California district court, accused the Trump administration of unlawfully retaliating against Anthropic for setting \"red […]",
-    "category": "industry",
-    "source": "The Verge",
-    "sourceUrl": "https://www.theverge.com/ai-artificial-intelligence/985947/anthropic-supply-chain-risk-lawsuit-judge-ruling",
-    "url": "https://www.theverge.com/ai-artificial-intelligence/985947/anthropic-supply-chain-risk-lawsuit-judge-ruling",
-    "image": "📰",
-    "cover": "",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T11:18:29.000Z",
-    "time": "13小时前",
-    "hot": true,
-    "tags": [
-      "Anthropic",
-      "AI监管"
-    ],
-    "content": "On Thursday, a judge ruled that the Pentagon's blacklisting of Anthropic earlier this year was unconstitutional, delivering the AI lab a win in a monthslong rollercoaster of a battle with the Trump administration. The lawsuit, filed in March in a California district court, accused the Trump administration of unlawfully retaliating against Anthropic for setting \"red […]"
   },
   {
     "id": 1922581404,
@@ -271,7 +353,7 @@
     "cover": "https://media.wired.com/photos/6a8f719f1780b42ea22395f3/master/pass/Anti-AI-Artists-Gathered-to-Share-Their-Handmade-Work-Culture.jpg",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T11:00:00.000Z",
-    "time": "13小时前",
+    "time": "1天前",
     "hot": false,
     "tags": [
       "AI资讯"
@@ -279,68 +361,27 @@
     "content": "The art portfolio platform Cara, designed for creators who don’t want their work used to train AI, has been under assault by trolls seizing and publishing its data."
   },
   {
-    "id": 186352876,
-    "title": "Meta推动机器人在数据中心工作",
-    "titleEn": "Inside Meta’s Push to Put Robots to Work in Data Centers",
-    "summary": "The company is testing robots that can swap cables, reset servers, and take on other tasks performed by technicians, fueling concerns among some workers that their jobs could be at risk.",
-    "summaryEn": "The company is testing robots that can swap cables, reset servers, and take on other tasks performed by technicians, fueling concerns among some workers that their jobs could be at risk.",
-    "category": "tech",
-    "source": "Wired",
-    "sourceUrl": "https://www.wired.com/story/inside-metas-experiments-with-data-center-robots/",
-    "url": "https://www.wired.com/story/inside-metas-experiments-with-data-center-robots/",
-    "image": "🦾",
-    "cover": "https://media.wired.com/photos/6a8778d3964ec62bf0f4c98f/master/pass/Inside-Meta-Experiments-with-Data-Center-Robots-Business.jpg",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T10:56:22.000Z",
-    "time": "13小时前",
-    "hot": true,
-    "tags": [
-      "Meta",
-      "机器人"
-    ],
-    "content": "The company is testing robots that can swap cables, reset servers, and take on other tasks performed by technicians, fueling concerns among some workers that their jobs could be at risk."
-  },
-  {
-    "id": 1956701367,
-    "title": "人工智能和认知科学重新定义知识保留",
-    "titleEn": "AI and Cognitive Science Redefine Knowledge Retention",
-    "summary": "AI and Cognitive Science Redefine Knowledge Retention",
-    "summaryEn": "AI and Cognitive Science Redefine Knowledge Retention",
-    "category": "opinion",
-    "source": "Hacker News",
-    "sourceUrl": "https://www.technology.org/2026/08/28/how-artificial-intelligence-and-cognitive-science-are-redefining-knowledge-retention-an-analysis-of-the-longtermemory-platform/",
-    "url": "https://www.technology.org/2026/08/28/how-artificial-intelligence-and-cognitive-science-are-redefining-knowledge-retention-an-analysis-of-the-longtermemory-platform/",
+    "id": 1763791398,
+    "title": "在被SpaceX收购后，我们对Cursor的决定",
+    "titleEn": "Our decision on Cursor following its acquisition by SpaceX",
+    "summary": "Our decision to wind down our contract providing OpenAI models to Cursor following its acquisition by SpaceX.",
+    "summaryEn": "Our decision to wind down our contract providing OpenAI models to Cursor following its acquisition by SpaceX.",
+    "category": "product",
+    "source": "OpenAI",
+    "sourceUrl": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex",
+    "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex",
     "image": "📰",
     "cover": "",
     "date": "2026-08-28",
-    "publishedAt": "2026-08-28T10:14:09.000Z",
-    "time": "14小时前",
+    "publishedAt": "2026-08-28T06:00:00.000Z",
+    "time": "2天前",
     "hot": false,
     "tags": [
-      "AI资讯"
+      "OpenAI",
+      "AI监管",
+      "AI编程"
     ],
-    "content": "AI and Cognitive Science Redefine Knowledge Retention"
-  },
-  {
-    "id": 2078543612,
-    "title": "一名法官阻止了五角大楼将 Anthropic 列入黑名单的企图",
-    "titleEn": "A Judge Has Blocked the Pentagon’s Attempt to Blacklist Anthropic",
-    "summary": "A federal judge has called the Department of Defense’s designation of Anthropic as a national security supply-chain risk “illegal and baseless.”",
-    "summaryEn": "A federal judge has called the Department of Defense’s designation of Anthropic as a national security supply-chain risk “illegal and baseless.”",
-    "category": "tech",
-    "source": "Wired",
-    "sourceUrl": "https://www.wired.com/story/a-judge-has-blocked-the-pentagons-attempt-to-blacklist-anthropic/",
-    "url": "https://www.wired.com/story/a-judge-has-blocked-the-pentagons-attempt-to-blacklist-anthropic/",
-    "image": "📰",
-    "cover": "https://media.wired.com/photos/6a90f2d127d3f5cec6f46d70/master/pass/2261854833",
-    "date": "2026-08-28",
-    "publishedAt": "2026-08-28T03:04:14.000Z",
-    "time": "21小时前",
-    "hot": false,
-    "tags": [
-      "Anthropic"
-    ],
-    "content": "A federal judge has called the Department of Defense’s designation of Anthropic as a national security supply-chain risk “illegal and baseless.”"
+    "content": "Our decision to wind down our contract providing OpenAI models to Cursor following its acquisition by SpaceX."
   },
   {
     "id": 82776726,
@@ -356,8 +397,8 @@
     "cover": "",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T02:00:00.000Z",
-    "time": "22小时前",
-    "hot": true,
+    "time": "2天前",
+    "hot": false,
     "tags": [
       "OpenAI",
       "AI医疗"
@@ -378,35 +419,12 @@
     "cover": "",
     "date": "2026-08-28",
     "publishedAt": "2026-08-28T00:00:00.000Z",
-    "time": "1天前",
+    "time": "2天前",
     "hot": false,
     "tags": [
       "AI资讯"
     ],
     "content": "The Open ASR Leaderboard Adds Its First Global South Language"
-  },
-  {
-    "id": 2054473191,
-    "title": "Anthropic and OpenAI are joining the AI stage at TechCrunch Disrupt 2026",
-    "titleEn": "Anthropic and OpenAI are joining the AI stage at TechCrunch Disrupt 2026",
-    "summary": "At TechCrunch Disrupt 2026, the AI Stage is back to dig into the single hottest topic in the community for the past few years, presented by Google for Startups.",
-    "summaryEn": "At TechCrunch Disrupt 2026, the AI Stage is back to dig into the single hottest topic in the community for the past few years, presented by Google for Startups.",
-    "category": "industry",
-    "source": "TechCrunch AI",
-    "sourceUrl": "https://techcrunch.com/2026/08/27/anthropic-and-openai-are-joining-the-ai-stage-at-techcrunch-disrupt-2026/",
-    "url": "https://techcrunch.com/2026/08/27/anthropic-and-openai-are-joining-the-ai-stage-at-techcrunch-disrupt-2026/",
-    "image": "🧠",
-    "cover": "",
-    "date": "2026-08-27",
-    "publishedAt": "2026-08-27T23:16:45.000Z",
-    "time": "1天前",
-    "hot": false,
-    "tags": [
-      "OpenAI",
-      "Anthropic",
-      "Google"
-    ],
-    "content": "At TechCrunch Disrupt 2026, the AI Stage is back to dig into the single hottest topic in the community for the past few years, presented by Google for Startups."
   },
   {
     "id": 707363727,
@@ -422,7 +440,7 @@
     "cover": "https://cdn.arstechnica.net/wp-content/uploads/2026/08/mhsdemo-1152x648.png",
     "date": "2026-08-27",
     "publishedAt": "2026-08-27T22:15:43.000Z",
-    "time": "1天前",
+    "time": "2天前",
     "hot": false,
     "tags": [
       "Anthropic"
@@ -443,7 +461,7 @@
     "cover": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Search_Travel_Blog_Hero_8.27.max-600x600.format-webp.webp",
     "date": "2026-08-27",
     "publishedAt": "2026-08-27T16:00:00.000Z",
-    "time": "1天前",
+    "time": "2天前",
     "hot": false,
     "tags": [
       "Google"
@@ -464,7 +482,7 @@
     "cover": "https://images.ctfassets.net/jdtwqhzvc2n1/5ScHW6mZ2rQr3EvsxrwooK/43df8725b6e12cd4bcf550bb7b3b1cb4/Gravitee_hero.jpg?w=300&q=30",
     "date": "2026-08-27",
     "publishedAt": "2026-08-27T14:01:00.000Z",
-    "time": "1天前",
+    "time": "2天前",
     "hot": false,
     "tags": [
       "自动驾驶"
@@ -485,7 +503,7 @@
     "cover": "",
     "date": "2026-08-27",
     "publishedAt": "2026-08-27T12:10:00.000Z",
-    "time": "1天前",
+    "time": "2天前",
     "hot": false,
     "tags": [
       "OpenAI"
@@ -506,33 +524,12 @@
     "cover": "https://images.ctfassets.net/jdtwqhzvc2n1/9VRh8KJhBqcFviSV8ClXc/feea8ec8fe76ffa0bc5cdb3dd95e1492/EDB_hero.jpeg?w=300&q=30",
     "date": "2026-08-27",
     "publishedAt": "2026-08-27T12:01:00.000Z",
-    "time": "1天前",
+    "time": "2天前",
     "hot": false,
     "tags": [
       "AI监管"
     ],
     "content": "Presented by EDB As enterprises give AI agents more autonomy — the ability to plan, decide, and act across systems without a human approving each step — a hard question moves to the center of every architecture review: When an agent tries to complete an action that it was never authorized to do, what actually stops it? These are your agents, running on your models, touching your data in your infrastructure — and the "
-  },
-  {
-    "id": 827914844,
-    "title": "更好的答案，更广泛的思考：学生从ChatGPT和批判性思维培训中获得什么",
-    "titleEn": "Better answers, broader thinking: What students gain from ChatGPT and critical-thinking training",
-    "summary": "A randomized study of more than 1,000 students examines ChatGPT, critical thinking, originality, and student performance on a real-world university assignment.",
-    "summaryEn": "A randomized study of more than 1,000 students examines ChatGPT, critical thinking, originality, and student performance on a real-world university assignment.",
-    "category": "tech",
-    "source": "OpenAI",
-    "sourceUrl": "https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training",
-    "url": "https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training",
-    "image": "🤖",
-    "cover": "",
-    "date": "2026-08-27",
-    "publishedAt": "2026-08-27T09:00:00.000Z",
-    "time": "1天前",
-    "hot": false,
-    "tags": [
-      "OpenAI"
-    ],
-    "content": "A randomized study of more than 1,000 students examines ChatGPT, critical thinking, originality, and student performance on a real-world university assignment."
   },
   {
     "id": 2007685349,
@@ -548,7 +545,7 @@
     "cover": "https://cdn.arstechnica.net/wp-content/uploads/2026/08/GettyImages-2171717886-1152x648.jpg",
     "date": "2026-08-26",
     "publishedAt": "2026-08-26T21:25:27.000Z",
-    "time": "2天前",
+    "time": "3天前",
     "hot": false,
     "tags": [
       "Meta",
@@ -570,7 +567,7 @@
     "cover": "",
     "date": "2026-08-26",
     "publishedAt": "2026-08-26T19:00:00.000Z",
-    "time": "2天前",
+    "time": "3天前",
     "hot": false,
     "tags": [
       "OpenAI"
@@ -591,7 +588,7 @@
     "cover": "",
     "date": "2026-08-26",
     "publishedAt": "2026-08-26T00:00:00.000Z",
-    "time": "3天前",
+    "time": "4天前",
     "hot": false,
     "tags": [
       "AI资讯"

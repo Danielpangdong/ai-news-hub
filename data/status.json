@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-29T00:53:30.966Z",
+  "fetchedAt": "2026-08-30T08:01:12.061Z",
   "itemCount": 28,
   "failedSources": [],
   "sources": [
@@ -13,7 +13,7 @@
       "name": "The Verge",
       "ok": true,
       "fetched": 6,
-      "published": 3
+      "published": 4
     },
     {
       "name": "MIT Technology Review",
@@ -61,7 +61,7 @@
       "name": "Hacker News",
       "ok": true,
       "fetched": 7,
-      "published": 4
+      "published": 3
     }
   ]
 }
